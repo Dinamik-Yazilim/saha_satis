@@ -1,0 +1,40 @@
+{
+    "home": {
+        "title": "Ana Sayfa",
+        "home_get_users": "Kullanıcıları Al"
+    },
+    "login": {
+        "title": "Giriş Yap",
+        "email": "E-posta",
+        "password": "Şifre",
+        "success": "Giriş başarılı",
+        "forgot_password": "Şifremi Unuttum",
+        "register": "Kayıt Ol"
+    },
+    "general": {
+        "language": {
+            "title": "Türkçe",
+            "change_language": "Dili Değiştir"
+        },
+        "validation": {
+            "required": "Bu alan gereklidir",
+            "email": "Geçerli bir e-posta adresi girin",
+            "url": "Geçerli bir URL girin",
+            "number": "Geçerli bir sayı girin",
+            "integer": "Geçerli bir tam sayı girin",
+            "date": "Geçerli bir tarih girin",
+            "time": "Geçerli bir saat girin",
+            "datetime": "Geçerli bir tarih ve saat girin",
+            "phone": "Geçerli bir telefon numarası girin"
+        },
+        "button": {
+            "save": "Kaydet {}"
+        },
+        "dialog": {
+            "version": {
+                "title": "Versiyon",
+                "content": "Versiyon bilgisi"
+            }
+        }
+    }
+}
