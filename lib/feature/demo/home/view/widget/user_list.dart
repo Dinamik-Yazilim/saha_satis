@@ -12,7 +12,12 @@ class _UserList extends StatelessWidget {
       builder: (context, state) {
         if (state.isEmpty) {
           return Column(
-            children: [Assets.images.imgFlags.image(package: 'gen'), Assets.lottie.animZombie.lottie(package: 'gen')],
+            children: [
+              Expanded(
+                child: Assets.images.imgFlags.image(package: 'gen', width: 400, height: 400),
+              ),
+              Expanded(child: Assets.lottie.animZombie.lottie(package: 'gen')),
+            ],
           );
         }
         return ListView.builder(

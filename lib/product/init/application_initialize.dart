@@ -21,7 +21,10 @@ final class ApplicationInitialize {
   static Future<void> _initialize() async {
     await EasyLocalization.ensureInitialized();
     EasyLocalization.logger.enableLevels = [LevelMessages.error];
-    await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
 
     FlutterError.onError = (details) {
       Logger().e(details.exceptionAsString());
