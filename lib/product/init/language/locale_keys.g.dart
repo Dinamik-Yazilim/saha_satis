@@ -5,6 +5,7 @@
 abstract class  LocaleKeys {
   static const home_title = 'home.title';
   static const home_home_get_users = 'home.home_get_users';
+  static const home_change_theme = 'home.change_theme';
   static const home = 'home';
   static const login_title = 'login.title';
   static const login_email = 'login.email';
