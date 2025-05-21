@@ -6,7 +6,6 @@ import 'package:gen/gen.dart';
 import 'package:dinamik10_pos/feature/demo/home/view_model/home_state.dart';
 import 'package:dinamik10_pos/feature/demo/home/view_model/home_view_model.dart';
 import 'package:dinamik10_pos/product/state/base/base_state.dart';
-import 'package:widgets/widgets.dart';
 
 import '../../../../product/init/language/locale_keys.g.dart';
 import '../../../../product/init/language/locales.dart';
@@ -43,6 +42,17 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SwitchListTile(
+                value: productViewModel.state.themeMode == ThemeMode.dark,
+                title: Text(LocaleKeys.home_change_theme).tr(),
+                onChanged: (value) {
+                  if (value == false) {
+                    productViewModel.changeThemeMode(ThemeMode.light);
+                  } else {
+                    productViewModel.changeThemeMode(ThemeMode.dark);
+                  }
+                },
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -50,24 +60,6 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
                     LocaleKeys.general_language_change_language,
                     style: Theme.of(context).textTheme.titleMedium,
                   ).tr(),
-                  Row(
-                    children: [
-                      CustomLoadingButton(
-                        title: 'Dark',
-                        hasBorder: false,
-                        onPressed: () async {
-                          productViewModel.changeThemeMode(ThemeMode.dark);
-                        },
-                      ),
-                      CustomLoadingButton(
-                        title: 'Light',
-                        hasBorder: false,
-                        onPressed: () async {
-                          productViewModel.changeThemeMode(ThemeMode.light);
-                        },
-                      ),
-                    ],
-                  ),
                   DropdownButton<Locales>(
                     value: selectedLocale,
                     items:
