@@ -8,7 +8,7 @@ import 'package:core/core.dart'; // For AppLogger and DatabaseException
 class DatabaseProvider {
   // Singleton instance
   static DatabaseProvider? _instance;
-  static const String _databaseName = 'okeanos_database.db';
+  static const String _databaseName = 'mobile_database.db';
 
   Database? _database;
   final MigrationManager _migrationManager;
