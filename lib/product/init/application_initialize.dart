@@ -8,6 +8,7 @@ import 'package:logger/logger.dart';
 
 import '../state/container/product_state_container.dart';
 import 'config/app_environment.dart';
+import 'database/database_initializer.dart';
 
 @immutable
 ///This class is used to initialize the application process
@@ -28,5 +29,6 @@ final class ApplicationInitialize {
     };
     AppEnvironment.general();
     ProductContainer.setup();
+    await DatabaseInitializer().initializeDatabase();
   }
 }
