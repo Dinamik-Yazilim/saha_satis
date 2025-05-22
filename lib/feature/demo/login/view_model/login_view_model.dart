@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:dinamik10_pos/feature/demo/login/view_model/login_state.dart';
-import 'package:dinamik10_pos/product/state/base/base_cubit.dart';
+import 'login_state.dart';
+import '../../../../product/state/base/base_cubit.dart';
 
 class LoginViewModel extends BaseCubit<LoginState> {
   LoginViewModel() : super(const LoginState());

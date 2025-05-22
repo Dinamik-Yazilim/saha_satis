@@ -2,7 +2,7 @@
     "home": {
         "title": "Ana Sayfa",
         "home_get_users": "Kullanıcıları Al",
-        "change_theme":"Tema Değiştir"
+        "change_theme": "Tema Değiştir"
     },
     "login": {
         "title": "Giriş Yap",

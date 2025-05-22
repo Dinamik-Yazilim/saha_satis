@@ -4,7 +4,7 @@ import '../../feature/demo/home/view/home_view.dart';
 import '../../feature/demo/login/view/login_view.dart';
 import '../../feature/demo/splash/splash_view.dart';
 
-part '../router/app_router.gr.dart';
+part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'View,Route')
 class AppRouter extends RootStackRouter {

@@ -3,9 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gen/gen.dart';
-import 'package:dinamik10_pos/feature/demo/home/view_model/home_state.dart';
-import 'package:dinamik10_pos/feature/demo/home/view_model/home_view_model.dart';
-import 'package:dinamik10_pos/product/state/base/base_state.dart';
+import '../view_model/home_state.dart';
+import '../view_model/home_view_model.dart';
+import '../../../../product/state/base/base_state.dart';
 
 import '../../../../product/init/language/locale_keys.g.dart';
 import '../../../../product/init/language/locales.dart';

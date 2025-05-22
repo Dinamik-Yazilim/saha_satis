@@ -1,4 +1,4 @@
-import 'package:dinamik10_pos/product/state/view_model/product_view_model.dart';
+import '../view_model/product_view_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../service/manager/product_service_manager.dart';
