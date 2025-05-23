@@ -50,6 +50,7 @@ class _HomeViewState extends BaseState<HomeView> with HomeViewMixin {
                     productViewModel.changeThemeMode(ThemeMode.light);
                   } else {
                     productViewModel.changeThemeMode(ThemeMode.dark);
+                    
                   }
                 },
               ),

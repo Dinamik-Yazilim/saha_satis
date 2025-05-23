@@ -1,5 +1,7 @@
+import 'package:core/core.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../cache/models/app_setting_model.dart';
 import '../../service/manager/product_service_manager.dart';
 import '../view_model/product_view_model.dart';
 
@@ -12,7 +14,13 @@ final class ProductContainer {
   static void setup() {
     _getIt
       ..registerSingleton<ProductNetworkManager>(ProductNetworkManager.base())
-      ..registerLazySingleton<ProductViewModel>(ProductViewModel.new);
+      ..registerLazySingleton<GenericRepository<AppSettingModel>>(
+        () => GenericRepository<AppSettingModel>(
+          tableName: AppSettingModel.staticTableName,
+          fromMapFactory: AppSettingModel.fromMap,
+        ),
+      )
+      ..registerLazySingleton<ProductViewModel>(() => ProductViewModel(_getIt<GenericRepository<AppSettingModel>>()));
   }
 
   /// read your dependency item for [ProductContainer]
