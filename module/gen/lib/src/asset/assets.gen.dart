@@ -36,12 +36,16 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/big_logo.png
+  AssetGenImage get bigLogo =>
+      const AssetGenImage('assets/images/big_logo.png');
+
   /// File path: assets/images/img_flags.png
   AssetGenImage get imgFlags =>
       const AssetGenImage('assets/images/img_flags.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [imgFlags];
+  List<AssetGenImage> get values => [bigLogo, imgFlags];
 }
 
 class $AssetsLottieGen {
