@@ -22,7 +22,7 @@ final class CustomLightTheme implements CustomTheme {
   @override
   AppBarTheme get appBarTheme => AppBarTheme(
     titleTextStyle: TextStyle(
-      fontSize: 20,
+      fontSize: 26,
       fontWeight: FontWeight.w600,
       color: CustomColorScheme.lightColorScheme.primary,
     ),

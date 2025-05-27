@@ -22,18 +22,17 @@ final class CustomDarkTheme implements CustomTheme {
   @override
   AppBarTheme get appBarTheme => AppBarTheme(
     titleTextStyle: TextStyle(
-      fontSize: 20,
+      fontSize: 26,
       fontWeight: FontWeight.w600,
       color: CustomColorScheme.lightColorScheme.onPrimary,
     ),
     centerTitle: true,
   );
-  
+
   @override
   ProgressIndicatorThemeData get progressIndicatorThemeData => ProgressIndicatorThemeData(
-      color: CustomColorScheme.darkColorScheme.onPrimary,
-      circularTrackColor: CustomColorScheme.darkColorScheme.secondary,
-      strokeWidth: 4,
-    );
-
+    color: CustomColorScheme.darkColorScheme.onPrimary,
+    circularTrackColor: CustomColorScheme.darkColorScheme.secondary,
+    strokeWidth: 4,
+  );
 }
