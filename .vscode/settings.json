@@ -119,5 +119,6 @@
         "AUTOINCREMENT",
         "roboto",
         "vexana"
-    ]
+    ],
+    "cmake.sourceDirectory": "/Users/hakanozsoyler/myapps/dinamik10_pos/windows"
 }
