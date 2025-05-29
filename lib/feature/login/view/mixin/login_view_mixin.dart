@@ -1,4 +1,4 @@
-import '../../../../../product/state/base/base_state.dart';
+import '../../../../product/state/base/base_state.dart';
 import '../../view_model/login_view_model.dart';
 import '../login_view.dart';
 
