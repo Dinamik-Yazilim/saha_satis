@@ -7,100 +7,100 @@ final class CustomColorScheme {
   /// Light color scheme set
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color(0xff6a5f11),
-    surfaceTint: Color(0xff6a5f11),
-    onPrimary: Color(0xffffffff),
-    primaryContainer: Color(0xfff3e489),
-    onPrimaryContainer: Color(0xff504700),
-    secondary: Color(0xff645f41),
-    onSecondary: Color(0xffffffff),
-    secondaryContainer: Color(0xffece3bd),
-    onSecondaryContainer: Color(0xff4c472b),
-    tertiary: Color(0xff416651),
-    onTertiary: Color(0xffffffff),
-    tertiaryContainer: Color(0xffc3ecd1),
-    onTertiaryContainer: Color(0xff294e3a),
-    error: Color(0xffba1a1a),
-    onError: Color(0xffffffff),
-    errorContainer: Color(0xffffdad6),
-    onErrorContainer: Color(0xff93000a),
-    surface: Color(0xfffff9eb),
-    onSurface: Color(0xff1d1c13),
-    onSurfaceVariant: Color(0xff4a4739),
-    outline: Color(0xff7b7768),
-    outlineVariant: Color(0xffccc6b5),
-    shadow: Color(0xff000000),
-    scrim: Color(0xff000000),
-    inverseSurface: Color(0xff333027),
-    inversePrimary: Color(0xffd6c870),
-    primaryFixed: Color(0xfff3e489),
-    onPrimaryFixed: Color(0xff201c00),
-    primaryFixedDim: Color(0xffd6c870),
-    onPrimaryFixedVariant: Color(0xff504700),
-    secondaryFixed: Color(0xffece3bd),
-    onSecondaryFixed: Color(0xff1f1c05),
-    secondaryFixedDim: Color(0xffcfc7a2),
-    onSecondaryFixedVariant: Color(0xff4c472b),
-    tertiaryFixed: Color(0xffc3ecd1),
-    onTertiaryFixed: Color(0xff002112),
-    tertiaryFixedDim: Color(0xffa7d0b6),
-    onTertiaryFixedVariant: Color(0xff294e3a),
-    surfaceDim: Color(0xffdfdacc),
-    surfaceBright: Color(0xfffff9eb),
-    surfaceContainerLowest: Color(0xffffffff),
-    surfaceContainerLow: Color(0xfff9f3e5),
-    surfaceContainer: Color(0xfff3ede0),
-    surfaceContainerHigh: Color(0xffede8da),
-    surfaceContainerHighest: Color(0xffe8e2d5),
+    primary: Color(0xFF2D3047), // Ana marka rengi: Koyu Mavi-Gri (güncellendi)
+    surfaceTint: Color(0xFF2D3047), // Primary ile aynı (güncellendi)
+    onPrimary: Color(0xFFFFFFFF), // Primary üzerinde beyaz metin
+    primaryContainer: Color(0xFFC8CBDA), // Primary'nin açık tonu (güncellendi)
+    onPrimaryContainer: Color(0xFF1A1D2D), // PrimaryContainer üzerinde koyu metin (güncellendi)
+    secondary: Color(0xFF4A635E), // İkincil renk: Gri-Yeşil
+    onSecondary: Color(0xFFFFFFFF), // Secondary üzerinde beyaz metin
+    secondaryContainer: Color(0xFFCCE8E1), // Secondary'nin açık tonu
+    onSecondaryContainer: Color(0xFF06201C), // SecondaryContainer üzerinde koyu metin
+    tertiary: Color(0xFF4A627B), // Üçüncül renk: Koyu Mavi-Gri
+    onTertiary: Color(0xFFFFFFFF), // Tertiary üzerinde beyaz metin
+    tertiaryContainer: Color(0xFFD1E4FF), // Tertiary'nin açık tonu
+    onTertiaryContainer: Color(0xFF051E34), // TertiaryContainer üzerinde koyu metin
+    error: Color(0xFFBA1A1A), // Hata rengi: Kırmızı
+    onError: Color(0xFFFFFFFF), // Hata üzerinde beyaz metin
+    errorContainer: Color(0xFFFFDAD6), // Hata renginin açık tonu
+    onErrorContainer: Color(0xFF410002), // HataContainer üzerinde koyu metin
+    surface: Color(0xFFFBFDFB), // Arka plan yüzey rengi: Çok açık gri
+    onSurface: Color(0xFF191C1B), // Surface üzerinde koyu metin
+    onSurfaceVariant: Color(0xFF404945), // Surface varyantı üzerinde koyu metin
+    outline: Color(0xFF6F7976), // Ana hat rengi: Gri
+    outlineVariant: Color(0xFFBFC9C5), // Ana hat varyantı
+    shadow: Color(0xff000000), // Gölge rengi
+    scrim: Color(0xff000000), // Ekran karartma rengi
+    inverseSurface: Color(0xFF2E3130), // Ters yüzey rengi (koyu mod için)
+    inversePrimary: Color(0xFFB0B3C8), // Ters primary (koyu modun primary'si) (güncellendi)
+    primaryFixed: Color(0xFFC8CBDA), // Primary'nin sabit açık tonu (güncellendi)
+    onPrimaryFixed: Color(0xFF1A1D2D), // PrimaryFixed üzerinde koyu metin (güncellendi)
+    primaryFixedDim: Color(0xFFB0B3C8), // Primary'nin sabit açık tonu (dim) (güncellendi)
+    onPrimaryFixedVariant: Color(0xFF444863), // PrimaryFixedVariant üzerinde koyu metin (güncellendi)
+    secondaryFixed: Color(0xFFCCE8E1),
+    onSecondaryFixed: Color(0xFF06201C),
+    secondaryFixedDim: Color(0xFFB0CCC5),
+    onSecondaryFixedVariant: Color(0xFF334B46),
+    tertiaryFixed: Color(0xFFD1E4FF),
+    onTertiaryFixed: Color(0xFF051E34),
+    tertiaryFixedDim: Color(0xFFAFC7E5),
+    onTertiaryFixedVariant: Color(0xFF334B63),
+    surfaceDim: Color(0xFFD9DBDA),
+    surfaceBright: Color(0xFFFBFDFB),
+    surfaceContainerLowest: Color(0xFFFFFFFF),
+    surfaceContainerLow: Color(0xFFF3F6F5),
+    surfaceContainer: Color(0xFFEDF0EF),
+    surfaceContainerHigh: Color(0xFFE7ECEB),
+    surfaceContainerHighest: Color(0xFFE2E6E5),
   );
 
-  /// Light dark scheme set
+  /// Dark color scheme set
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color(0xffd6c870),
-    surfaceTint: Color(0xffd6c870),
-    onPrimary: Color(0xff373100),
-    primaryContainer: Color(0xff504700),
-    onPrimaryContainer: Color(0xfff3e489),
-    secondary: Color(0xffcfc7a2),
-    onSecondary: Color(0xff353117),
-    secondaryContainer: Color(0xff4c472b),
-    onSecondaryContainer: Color(0xffece3bd),
-    tertiary: Color(0xffa7d0b6),
-    onTertiary: Color(0xff113725),
-    tertiaryContainer: Color(0xff294e3a),
-    onTertiaryContainer: Color(0xffc3ecd1),
-    error: Color(0xffffb4ab),
-    onError: Color(0xff690005),
-    errorContainer: Color(0xff93000a),
-    onErrorContainer: Color(0xffffdad6),
-    surface: Color(0xff15130c),
-    onSurface: Color(0xffe8e2d5),
-    onSurfaceVariant: Color(0xffccc6b5),
-    outline: Color(0xff959181),
-    outlineVariant: Color(0xff4a4739),
-    shadow: Color(0xff000000),
-    scrim: Color(0xff000000),
-    inverseSurface: Color(0xffe8e2d5),
-    inversePrimary: Color(0xff6a5f11),
-    primaryFixed: Color(0xfff3e489),
-    onPrimaryFixed: Color(0xff201c00),
-    primaryFixedDim: Color(0xffd6c870),
-    onPrimaryFixedVariant: Color(0xff504700),
-    secondaryFixed: Color(0xffece3bd),
-    onSecondaryFixed: Color(0xff1f1c05),
-    secondaryFixedDim: Color(0xffcfc7a2),
-    onSecondaryFixedVariant: Color(0xff4c472b),
-    tertiaryFixed: Color(0xffc3ecd1),
-    onTertiaryFixed: Color(0xff002112),
-    tertiaryFixedDim: Color(0xffa7d0b6),
-    onTertiaryFixedVariant: Color(0xff294e3a),
-    surfaceDim: Color(0xff15130c),
-    surfaceBright: Color(0xff3b3930),
-    surfaceContainerLowest: Color(0xff100e07),
-    surfaceContainerLow: Color(0xff1d1c13),
-    surfaceContainer: Color(0xff212017),
-    surfaceContainerHigh: Color(0xff2c2a21),
-    surfaceContainerHighest: Color(0xff37352c),
+    primary: Color(0xFFB0B3C8), // Ana marka rengi: Açık Mavi-Gri (koyu mod için) (güncellendi)
+    surfaceTint: Color(0xFFB0B3C8), // Primary ile aynı (güncellendi)
+    onPrimary: Color(0xFF1A1D2D), // Primary üzerinde koyu metin (güncellendi)
+    primaryContainer: Color(0xFF444863), // Primary'nin koyu tonu (güncellendi)
+    onPrimaryContainer: Color(0xFFC8CBDA), // PrimaryContainer üzerinde açık metin (güncellendi)
+    secondary: Color(0xFFB0CCC5), // İkincil renk: Açık Gri-Yeşil
+    onSecondary: Color(0xFF1D3531), // Secondary üzerinde koyu metin
+    secondaryContainer: Color(0xFF334B46), // Secondary'nin koyu tonu
+    onSecondaryContainer: Color(0xFFCCE8E1), // SecondaryContainer üzerinde açık metin
+    tertiary: Color(0xFFAFC7E5), // Üçüncül renk: Açık Mavi-Gri
+    onTertiary: Color(0xFF1A334A), // Tertiary üzerinde koyu metin
+    tertiaryContainer: Color(0xFF334B63), // Tertiary'nin koyu tonu
+    onTertiaryContainer: Color(0xFFD1E4FF), // TertiaryContainer üzerinde açık metin
+    error: Color(0xFF93000A), // Hata rengi: Kırmızı
+    onError: Color(0xFF690005), // Hata üzerinde koyu metin
+    errorContainer: Color(0xFF93000A), // Hata renginin koyu tonu
+    onErrorContainer: Color(0xFFFFDAD6), // HataContainer üzerinde açık metin
+    surface: Color(0xFF111413), // Arka plan yüzey rengi: Çok koyu gri
+    onSurface: Color(0xFFE2E6E5), // Surface üzerinde açık metin
+    onSurfaceVariant: Color(0xFFBFC9C5), // Surface varyantı üzerinde açık metin
+    outline: Color(0xFF899390), // Ana hat rengi: Gri
+    outlineVariant: Color(0xFF404945), // Ana hat varyantı
+    shadow: Color(0xff000000), // Gölge rengi
+    scrim: Color(0xff000000), // Ekran karartma rengi
+    inverseSurface: Color(0xFFE2E6E5), // Ters yüzey rengi (açık mod için)
+    inversePrimary: Color(0xFF2D3047), // Ters primary (açık modun primary'si) (güncellendi)
+    primaryFixed: Color(0xFFC8CBDA), // Primary'nin sabit açık tonu (güncellendi)
+    onPrimaryFixed: Color(0xFF1A1D2D), // PrimaryFixed üzerinde koyu metin (güncellendi)
+    primaryFixedDim: Color(0xFFB0B3C8), // Primary'nin sabit açık tonu (dim) (güncellendi)
+    onPrimaryFixedVariant: Color(0xFF444863), // PrimaryFixedVariant üzerinde koyu metin (güncellendi)
+    secondaryFixed: Color(0xFFCCE8E1),
+    onSecondaryFixed: Color(0xFF06201C),
+    secondaryFixedDim: Color(0xFFB0CCC5),
+    onSecondaryFixedVariant: Color(0xFF334B46),
+    tertiaryFixed: Color(0xFFD1E4FF),
+    onTertiaryFixed: Color(0xFF051E34),
+    tertiaryFixedDim: Color(0xFFAFC7E5),
+    onTertiaryFixedVariant: Color(0xFF334B63),
+    surfaceDim: Color(0xFF111413),
+    surfaceBright: Color(0xFF373A39),
+    surfaceContainerLowest: Color(0xFF0C0F0E),
+    surfaceContainerLow: Color(0xFF191C1B),
+    surfaceContainer: Color(0xFF1D201F),
+    surfaceContainerHigh: Color(0xFF282B2A),
+    surfaceContainerHighest: Color(0xFF333635),
   );
 }

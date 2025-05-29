@@ -10,7 +10,7 @@ class _LoginButton extends StatelessWidget {
     return BlocListener<LoginViewModel, LoginState>(
       listener: (context, state) {
         if (state.isSuccess) {
-          context.router.replace(const HomeRoute());
+          context.router.replace(const LayoutRoute());
         } else if (state.errorMessage != null) {
           customShowDialogGeneric(context, alertEnum: AlertEnum.error, subTitle: state.errorMessage ?? '');
         }

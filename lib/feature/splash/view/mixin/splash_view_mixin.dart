@@ -31,10 +31,10 @@ mixin SplashViewMixin on BaseState<SplashView> {
 
     if (isAuthenticated) {
       AppLogger.info('SplashView: Navigating to HomeView.');
-      context.router.replace(HomeRoute());
+      context.router.replace(LayoutRoute());
     } else {
       AppLogger.info('SplashView: Navigating to LoginView.');
-      context.router.replace(LoginRoute());
+      context.router.replace(LayoutRoute());
     }
   }
 }

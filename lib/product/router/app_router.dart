@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import '../../feature/demo/home/view/home_view.dart';
 import '../../feature/demo/login/view/login_view.dart';
+import '../../feature/layout/view/layout_view.dart';
 import '../../feature/splash/view/splash_view.dart';
 
 part 'app_router.gr.dart';
@@ -13,5 +14,6 @@ class AppRouter extends RootStackRouter {
     AutoRoute(page: SplashRoute.page, initial: true),
     CustomRoute(page: LoginRoute.page, transitionsBuilder: TransitionsBuilders.fadeIn),
     CustomRoute(page: HomeRoute.page, transitionsBuilder: TransitionsBuilders.fadeIn),
+    CustomRoute(page: LayoutRoute.page, transitionsBuilder: TransitionsBuilders.noTransition),
   ];
 }

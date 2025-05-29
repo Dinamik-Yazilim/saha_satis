@@ -28,7 +28,7 @@ class _LoginViewState extends BaseState<LoginView> with LoginViewMixin {
     return BlocProvider(
       create: (context) => loginViewModel,
       child: Scaffold(
-        appBar: CustomAppBar(title: LocaleKeys.login_title.tr(), isExit: false),
+        appBar: CustomAppBar(title: Text(LocaleKeys.login_title).tr(), isExit: false),
         body: Column(
           children: [
             Expanded(
