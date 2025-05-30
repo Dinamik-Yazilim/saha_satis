@@ -1,6 +1,7 @@
 import 'package:dinamik10_pos/feature/layout/view/mixin/layout_view_mixin.dart';
 import 'package:dinamik10_pos/product/common/widget/custom_appbar.dart';
 import 'package:dinamik10_pos/product/state/base/base_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
@@ -93,7 +94,7 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
           final bool shouldShowExitIcon = layoutState.isOnMainMenu;
 
           return CustomAppBar(
-            title: Text(titleText),
+            title: Text(titleText).tr(),
             leading:
                 showLeadingButton
                     ? IconButton(

@@ -2,7 +2,7 @@
     "home": {
         "title": "Ana Sayfa",
         "home_get_users": "Kullanıcıları Al",
-        "change_theme": "Tema Değiştir"
+        "change_theme": "Koyu Tema"
     },
     "login": {
         "title": "Giriş Yap",
@@ -12,10 +12,21 @@
         "forgot_password": "Şifremi Unuttum",
         "register": "Kayıt Ol"
     },
+    "menu": {
+        "purchase_documents": "Alış Evrakları",
+        "purchase_invoice": "Alış Faturası",
+        "purchase_delivery_note": "Alış İrsaliyesi",
+        "purchase_return": "Alış İadesi",
+        "sales_documents": "Satış Evrakları",
+        "sales_invoice": "Satış Faturası",
+        "sales_delivery_note": "Satış İrsaliyesi",
+        "reports": "Raporlar",
+        "settings": "Ayarlar"
+    },
     "general": {
         "language": {
             "title": "Türkçe",
-            "change_language": "Dili Değiştir"
+            "change_language": "Dil"
         },
         "validation": {
             "required": "Bu alan gereklidir",

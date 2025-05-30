@@ -34,7 +34,7 @@ mixin SplashViewMixin on BaseState<SplashView> {
       context.router.replace(LayoutRoute());
     } else {
       AppLogger.info('SplashView: Navigating to LoginView.');
-      context.router.replace(LayoutRoute());
+      context.router.replace(LoginRoute());
     }
   }
 }

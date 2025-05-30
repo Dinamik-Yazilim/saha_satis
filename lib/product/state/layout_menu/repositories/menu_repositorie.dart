@@ -1,74 +1,83 @@
-// lib/data/menu_repository.dart
+import 'package:dinamik10_pos/product/init/language/locale_keys.g.dart';
 import 'package:dinamik10_pos/product/router/app_router.dart';
 import 'package:flutter/material.dart';
 import '../model/menu_item.dart';
 
+/*   Text(
+                  ,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: contentColor),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ), */
 class MenuRepository {
   // The place where we define the entire menu structure of the application
   static final List<MenuItem> _allMenuItems = [
     MenuItem(
       id: 'alis_evraklari',
-      title: 'Alış Evrakları',
+      title: LocaleKeys.menu_purchase_documents,
       icon: Icons.receipt_long,
       requiredPermissions: ['can_view_purchase'],
       children: [
         MenuItem(
           id: 'alis_faturasi',
-          title: 'Alış Faturası',
+          title: LocaleKeys.menu_purchase_invoice,
           icon: Icons.description,
-          route: const HomeRoute(),
+          route: const SettingRoute(),
           requiredPermissions: ['can_view_purchase_invoice'],
         ),
         MenuItem(
           id: 'alis_irsaliyesi',
-          title: 'Alış İrsaliyesi',
+          title: LocaleKeys.menu_sales_delivery_note,
           icon: Icons.delivery_dining,
-          route: const HomeRoute(),
+          route: const SettingRoute(),
           requiredPermissions: ['can_view_purchase_delivery_note'],
         ),
         MenuItem(
           id: 'alis_iadesi',
-          title: 'Alış İadesi',
+          title: LocaleKeys.menu_purchase_return,
           icon: Icons.assignment_return,
-          route: const HomeRoute(),
+          route: const SettingRoute(),
           requiredPermissions: ['can_view_purchase_return'],
         ),
       ],
     ),
     MenuItem(
       id: 'satis_evraklari',
-      title: 'Satış Evrakları',
+      title: LocaleKeys.menu_sales_documents,
       icon: Icons.point_of_sale,
       requiredPermissions: ['can_view_sale'],
       children: [
         MenuItem(
           id: 'satis_faturasi',
-          title: 'Satış Faturası',
+          title: LocaleKeys.menu_sales_invoice,
           icon: Icons.receipt_long,
-          route: const HomeRoute(),
+          route: const SettingRoute(),
           requiredPermissions: ['can_view_sale_invoice'],
         ),
         MenuItem(
           id: 'satis_irsaliyesi',
-          title: 'Satış İrsaliyesi',
+          title: LocaleKeys.menu_sales_delivery_note,
           icon: Icons.local_shipping,
-          route: const HomeRoute(),
+          route: const SettingRoute(),
           requiredPermissions: ['can_view_sale_delivery_note'],
         ),
       ],
     ),
     MenuItem(
       id: 'raporlar',
-      title: 'Raporlar',
+      title: LocaleKeys.menu_reports,
       icon: Icons.bar_chart,
       route: const HomeRoute(),
       requiredPermissions: ['can_view_reports'],
     ),
     MenuItem(
       id: 'ayarlar',
-      title: 'Ayarlar',
+      title: LocaleKeys.menu_settings,
       icon: Icons.settings,
-      route: const HomeRoute(),
+      route: const SettingRoute(),
       requiredPermissions: ['can_manage_settings'],
     ),
   ];

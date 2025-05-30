@@ -44,7 +44,7 @@ class _MenuItemTile extends StatelessWidget {
                   ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: contentColor),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                ),
+                ).tr(),
                 if (menuItem.isExpandable) Icon(Icons.layers, size: 18, color: contentColor.withValues(alpha: 0.6)),
               ],
             ),

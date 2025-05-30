@@ -14,6 +14,16 @@ abstract class  LocaleKeys {
   static const login_forgot_password = 'login.forgot_password';
   static const login_register = 'login.register';
   static const login = 'login';
+  static const menu_purchase_documents = 'menu.purchase_documents';
+  static const menu_purchase_invoice = 'menu.purchase_invoice';
+  static const menu_purchase_delivery_note = 'menu.purchase_delivery_note';
+  static const menu_purchase_return = 'menu.purchase_return';
+  static const menu_sales_documents = 'menu.sales_documents';
+  static const menu_sales_invoice = 'menu.sales_invoice';
+  static const menu_sales_delivery_note = 'menu.sales_delivery_note';
+  static const menu_reports = 'menu.reports';
+  static const menu_settings = 'menu.settings';
+  static const menu = 'menu';
   static const general_language_title = 'general.language.title';
   static const general_language_change_language = 'general.language.change_language';
   static const general_language = 'general.language';
