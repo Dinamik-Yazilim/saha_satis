@@ -9,7 +9,7 @@ class _SettingCard extends StatelessWidget {
     for (int i = 0; i < widgets.length; i++) {
       separated.add(widgets[i]);
       if (i < widgets.length - 1) {
-        separated.add(Divider(color: Theme.of(context).dividerColor, thickness: 3, indent: 15, endIndent: 15));
+        separated.add(Divider(color: context.general.appTheme.dividerColor, thickness: 3, indent: 15, endIndent: 15));
       }
     }
     return separated;
@@ -22,7 +22,7 @@ class _SettingCard extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+          color: context.general.colorScheme.primary.withValues(alpha: 0.1),
           borderRadius: ProjectBorderRadius.medium(),
         ),
         child: Column(

@@ -3,15 +3,6 @@ import 'package:dinamik10_pos/product/router/app_router.dart';
 import 'package:flutter/material.dart';
 import '../model/menu_item.dart';
 
-/*   Text(
-                  ,
-                  textAlign: TextAlign.center,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: contentColor),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ), */
 class MenuRepository {
   // The place where we define the entire menu structure of the application
   static final List<MenuItem> _allMenuItems = [

@@ -5,6 +5,7 @@ import 'package:dinamik10_pos/product/router/app_router.dart';
 import 'package:dinamik10_pos/product/state/base/base_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:kartal/kartal.dart';
 import 'package:widgets/widgets.dart';
 import 'package:bootstrap_icons/bootstrap_icons.dart';
 
@@ -28,7 +29,7 @@ class _SettingViewState extends BaseState<SettingView> with SettingMixin {
       appBar: CustomAppBar(
         title: Text(LocaleKeys.menu_settings).tr(),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: Theme.of(context).colorScheme.primary),
+          icon: Icon(Icons.arrow_back_ios_new, color: context.general.colorScheme.primary),
           onPressed: () {
             context.router.replace(LayoutRoute());
           },
@@ -45,7 +46,7 @@ class _SettingViewState extends BaseState<SettingView> with SettingMixin {
                   children: [
                     Icon(Icons.dark_mode),
                     SizedBox(width: 15),
-                    Text(LocaleKeys.home_change_theme, style: Theme.of(context).textTheme.titleMedium).tr(),
+                    Text(LocaleKeys.home_change_theme, style: context.general.textTheme.titleMedium).tr(),
                   ],
                 ),
                 onChanged: (value) {
@@ -61,7 +62,7 @@ class _SettingViewState extends BaseState<SettingView> with SettingMixin {
                 title:
                     Text(
                       LocaleKeys.general_language_change_language,
-                      style: Theme.of(context).textTheme.titleMedium,
+                      style: context.general.textTheme.titleMedium,
                     ).tr(),
                 trailing: DropdownButton<Locales>(
                   value: selectedLocale,

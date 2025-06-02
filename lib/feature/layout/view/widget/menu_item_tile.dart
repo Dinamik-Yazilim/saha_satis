@@ -39,9 +39,10 @@ class _MenuItemTile extends StatelessWidget {
                 Text(
                   menuItem.title,
                   textAlign: TextAlign.center,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold, color: contentColor),
+                  style: context.general.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: contentColor,
+                  ),
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ).tr(),

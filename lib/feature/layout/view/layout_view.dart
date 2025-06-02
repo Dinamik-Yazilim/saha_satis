@@ -5,6 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:kartal/kartal.dart';
 
 import '../view_model/layout_view_model.dart';
 import '../view_model/layout_state.dart';
@@ -98,7 +99,7 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
             leading:
                 showLeadingButton
                     ? IconButton(
-                      icon: Icon(Icons.arrow_back_ios_new, color: Theme.of(context).colorScheme.primary),
+                      icon: Icon(Icons.arrow_back_ios_new, color: context.general.colorScheme.primary),
                       onPressed: () {
                         context.read<LayoutViewModel>().goBack();
                       },

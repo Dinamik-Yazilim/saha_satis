@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gen/gen.dart';
+import 'package:kartal/kartal.dart';
 import 'package:widgets/widgets.dart';
 
 class AppLogoWidget extends StatelessWidget {
@@ -7,7 +8,7 @@ class AppLogoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color primaryColor = Theme.of(context).colorScheme.primary;
+    final Color primaryColor = context.general.colorScheme.primary;
     final Color lighterPrimaryColor = Color.lerp(primaryColor, Colors.black, 0.45)!;
 
     return Padding(
