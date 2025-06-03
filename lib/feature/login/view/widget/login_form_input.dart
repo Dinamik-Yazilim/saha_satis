@@ -10,30 +10,33 @@ class _LoginFormInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
-      child: Column(
-        children: [
-          CustomFormField(
-            controller: emailC,
-            fieldType: CustomFormFieldType.email,
-            isDone: false,
-            decoration: customFormFieldDecoration(
-              context,
-              labelText: LocaleKeys.login_email.tr(),
-              prefixIcon: const Icon(Icons.email_outlined),
+      child: Padding(
+        padding: ProjectPadding.allMedium(),
+        child: Column(
+          children: [
+            CustomFormField(
+              controller: emailC,
+              fieldType: CustomFormFieldType.email,
+              isDone: false,
+              decoration: customFormFieldDecoration(
+                context,
+                labelText: LocaleKeys.login_email.tr(),
+                prefixIcon: const Icon(Icons.email_outlined),
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          CustomFormField(
-            controller: passwordC,
-            fieldType: CustomFormFieldType.password,
-            isDone: true,
-            decoration: customFormFieldDecoration(
-              context,
-              labelText: LocaleKeys.login_password.tr(),
-              prefixIcon: const Icon(Icons.lock_outline_rounded),
+            const SizedBox(height: 16),
+            CustomFormField(
+              controller: passwordC,
+              fieldType: CustomFormFieldType.password,
+              isDone: true,
+              decoration: customFormFieldDecoration(
+                context,
+                labelText: LocaleKeys.login_password.tr(),
+                prefixIcon: const Icon(Icons.lock_outline_rounded),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -30,23 +30,47 @@ class _MenuItemTile extends StatelessWidget {
           highlightColor: contentColor.withValues(alpha: 0.08),
           child: Padding(
             padding: const EdgeInsets.all(0.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
+              alignment: Alignment.center,
               children: [
-                if (menuItem.icon != null) Icon(menuItem.icon, size: 56, color: contentColor),
-                const SizedBox(height: 16),
-                Text(
-                  menuItem.title,
-                  textAlign: TextAlign.center,
-                  style: context.general.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: contentColor,
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (menuItem.icon != null)
+                      Icon(
+                        menuItem.icon,
+                        size: CustomResponsiveHelper.isMobileOrTablet(context) ? 56 : 84,
+                        color: contentColor,
+                      ),
+                    Text(
+                      menuItem.title,
+                      textAlign: TextAlign.center,
+                      style:
+                          CustomResponsiveHelper.isMobileOrTablet(context)
+                              ? context.general.textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: contentColor,
+                              )
+                              : context.general.textTheme.headlineMedium?.copyWith(
+                                fontWeight: FontWeight.bold,
+                                color: contentColor,
+                              ),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ).tr(),
+                  ],
+                ),
+                if (menuItem.isExpandable)
+                  Positioned(
+                    right: 20,
+                    top: 20,
+                    child: Icon(
+                      Icons.layers,
+                      size: CustomResponsiveHelper.isMobileOrTablet(context) ? 24 : 32,
+                      color: contentColor.withValues(alpha: 0.6),
+                    ),
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ).tr(),
-                if (menuItem.isExpandable) Icon(Icons.layers, size: 18, color: contentColor.withValues(alpha: 0.6)),
               ],
             ),
           ),

@@ -1,6 +1,5 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:dinamik10_pos/product/common/widget/app_logo_widget.dart';
-import 'package:dinamik10_pos/product/common/widget/custom_appbar.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,29 +26,55 @@ class _LoginViewState extends BaseState<LoginView> with LoginViewMixin {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => loginViewModel,
-      child: Scaffold(
-        appBar: CustomAppBar(title: Text(LocaleKeys.login_title).tr(), isExit: false),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                children: [
-                  AppLogoWidget(),
-                  Padding(
-                    padding: ProjectPadding.allMedium(),
-                    child: _LoginFormInput(
-                      formKey: loginViewModel.formKey,
-                      emailC: loginViewModel.emailC,
-                      passwordC: loginViewModel.passwordC,
-                    ),
-                  ),
-                ],
-              ),
+      child: Scaffold(body: SafeArea(child: AdaptMobileView(phone: _phoneUi(), tablet: _tabletUi()))),
+    );
+  }
+
+  Widget _tabletUi() {
+    return Padding(
+      padding: ProjectPadding.allLarge(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          AppLogoWidget(),
+          Expanded(
+            child: ListView(
+              children: [
+                _LoginFormInput(
+                  formKey: loginViewModel.formKey,
+                  emailC: loginViewModel.emailC,
+                  passwordC: loginViewModel.passwordC,
+                ),
+                _LoginButton(loginViewModel: loginViewModel),
+              ],
             ),
-            Padding(padding: ProjectPadding.allMedium(), child: _LoginButton(loginViewModel: loginViewModel)),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _phoneUi() {
+    return Column(
+      children: [
+        Expanded(
+          child: ListView(
+            children: [
+              AppLogoWidget(),
+              Padding(
+                padding: ProjectPadding.allMedium(),
+                child: _LoginFormInput(
+                  formKey: loginViewModel.formKey,
+                  emailC: loginViewModel.emailC,
+                  passwordC: loginViewModel.passwordC,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Padding(padding: ProjectPadding.allMedium(), child: _LoginButton(loginViewModel: loginViewModel)),
+      ],
     );
   }
 }

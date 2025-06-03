@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import 'package:widgets/widgets.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
@@ -18,7 +19,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ? leading ?? SizedBox()
               : IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.exit_to_app, color: context.general.colorScheme.error, size: 28),
+                icon: Icon(
+                  Icons.exit_to_app,
+                  color: context.general.colorScheme.error,
+                  size: CustomResponsiveHelper.isMobileOrTablet(context) ? 28 : 40,
+                ),
               ),
       bottom: bottom,
     );

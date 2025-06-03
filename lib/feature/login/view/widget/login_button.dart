@@ -1,5 +1,5 @@
-
 part of '../login_view.dart';
+
 class _LoginButton extends StatelessWidget {
   const _LoginButton({required this.loginViewModel});
 
@@ -15,12 +15,16 @@ class _LoginButton extends StatelessWidget {
           customShowDialogGeneric(context, alertEnum: AlertEnum.error, subTitle: state.errorMessage ?? '');
         }
       },
-      child: CustomLoadingButton(
-        hasBorder: false,
-        onPressed: () async {
-          await loginViewModel.login();
-        },
-        title: LocaleKeys.login_title.tr(),
+      child: Padding(
+        padding: ProjectPadding.allMedium(),
+        child: CustomLoadingButton(
+          hasBorder: false,
+          onPressed: () async {
+            await loginViewModel.login();
+          },
+          title: LocaleKeys.login_title.tr(),
+          size: CustomResponsiveHelper.isMobileOrTablet(context) ? CustomButtonSize.medium : CustomButtonSize.large,
+        ),
       ),
     );
   }

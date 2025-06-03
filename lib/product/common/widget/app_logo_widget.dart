@@ -12,8 +12,9 @@ class AppLogoWidget extends StatelessWidget {
     final Color lighterPrimaryColor = Color.lerp(primaryColor, Colors.black, 0.45)!;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      padding: ProjectPadding.allMedium(),
       child: Container(
+        height: CustomResponsiveHelper.isMobileOrTablet(context) ? 200 : 250,
         decoration: BoxDecoration(
           borderRadius: ProjectBorderRadius.normal(),
           gradient: LinearGradient(

@@ -18,7 +18,7 @@ class _SettingCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: ProjectPadding.allSmall(),
+      padding: CustomResponsiveHelper.isMobileOrTablet(context) ? ProjectPadding.allSmall() : ProjectPadding.allLarge(),
       child: Container(
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(

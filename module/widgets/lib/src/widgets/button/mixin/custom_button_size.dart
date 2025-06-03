@@ -10,7 +10,7 @@ extension CustomButtonSizeExtension on CustomButtonSize {
       case CustomButtonSize.medium:
         return 55.0;
       case CustomButtonSize.large:
-        return 70.0;
+        return 90.0;
     }
   }
 
@@ -21,7 +21,7 @@ extension CustomButtonSizeExtension on CustomButtonSize {
       case CustomButtonSize.medium:
         return 16.0;
       case CustomButtonSize.large:
-        return 18.0;
+        return 28.0;
     }
   }
 

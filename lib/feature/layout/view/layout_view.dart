@@ -1,5 +1,6 @@
 import 'package:dinamik10_pos/feature/layout/view/mixin/layout_view_mixin.dart';
 import 'package:dinamik10_pos/product/common/widget/custom_appbar.dart';
+import 'package:dinamik10_pos/product/init/language/locale_keys.g.dart';
 import 'package:dinamik10_pos/product/state/base/base_state.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -42,21 +43,42 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
                 layoutState.currentMenuItems.where((item) {
                   return canAccess(item);
                 }).toList();
-            return _layoutBody(visibleMenuItems);
+            return AdaptMobileView(
+              phone: _layoutBody(
+                visibleMenuItems,
+                crossAxisCount: 2,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+                childAspectRatio: 1.2,
+              ),
+              tablet: _layoutBody(
+                visibleMenuItems,
+                crossAxisCount: 3,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+                childAspectRatio: 1.2,
+              ),
+            );
           },
         ),
       ),
     );
   }
 
-  GridView _layoutBody(List<MenuItem> visibleMenuItems) {
+  GridView _layoutBody(
+    List<MenuItem> visibleMenuItems, {
+    required int crossAxisCount,
+    required double crossAxisSpacing,
+    required double mainAxisSpacing,
+    required double childAspectRatio,
+  }) {
     return GridView.builder(
       padding: const EdgeInsets.all(8),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        crossAxisSpacing: 8,
-        mainAxisSpacing: 8,
-        childAspectRatio: 1.2,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        crossAxisSpacing: crossAxisSpacing,
+        mainAxisSpacing: mainAxisSpacing,
+        childAspectRatio: childAspectRatio,
       ),
       itemCount: visibleMenuItems.length,
       itemBuilder: (context, index) {
@@ -90,7 +112,8 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
       preferredSize: const Size.fromHeight(kToolbarHeight),
       child: BlocBuilder<LayoutViewModel, LayoutState>(
         builder: (context, layoutState) {
-          final String titleText = layoutState.breadcrumb.isNotEmpty ? layoutState.breadcrumb.last.title : 'Ana Menü';
+          final String titleText =
+              layoutState.breadcrumb.isNotEmpty ? layoutState.breadcrumb.last.title : LocaleKeys.home_title.tr();
           final bool showLeadingButton = !layoutState.isOnMainMenu;
           final bool shouldShowExitIcon = layoutState.isOnMainMenu;
 

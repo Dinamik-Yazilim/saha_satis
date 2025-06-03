@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../utility/project_border.dart';
 
@@ -30,5 +31,6 @@ InputDecoration customFormFieldDecoration(
     focusedBorder: border(colorScheme.primary, width: 1.5),
     errorBorder: border(colorScheme.error),
     focusedErrorBorder: border(colorScheme.error, width: 1.5),
+    contentPadding: EdgeInsets.symmetric(vertical: ResponsiveBreakpoints.of(context).isMobile ? 15 : 25),
   );
 }
