@@ -126,7 +126,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   /// Deletes the user with the specified ID.
-  Future<void> _deleteUser(int id) async {
+  Future<void> _deleteUser(String id) async {
     try {
       await _userRepository.delete(id); // Delete the user
       AppLogger.info('User deleted, ID: $id');

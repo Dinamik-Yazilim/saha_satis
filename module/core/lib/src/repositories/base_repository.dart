@@ -52,7 +52,7 @@ abstract class BaseRepository<T extends BaseModel> {
   }
 
   /// Retrieves the record with the specified ID.
-  Future<T?> getById(int id) async {
+  Future<T?> getById(dynamic id) async {
     final db = await databaseProvider.database;
     try {
       final List<Map<String, dynamic>> maps = await db.query(tableName, where: 'id = ?', whereArgs: [id]);
@@ -138,7 +138,7 @@ abstract class BaseRepository<T extends BaseModel> {
   }
 
   /// Deletes the record with the specified ID.
-  Future<int> delete(int id) async {
+  Future<int> delete(dynamic id) async {
     final db = await databaseProvider.database;
     try {
       final rowsAffected = await db.delete(tableName, where: 'id = ?', whereArgs: [id]);

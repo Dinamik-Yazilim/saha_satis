@@ -20,7 +20,7 @@ class UserModel extends BaseModel {
   /// Creates a UserModel from a Map.
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: map['id'] as int?,
+      id: map['id'] as String?,
       name: map['name'] as String,
       age: map['age'] as int,
       email: map['email'] as String,

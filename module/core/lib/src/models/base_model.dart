@@ -2,7 +2,7 @@
 /// Every database model must implement this interface.
 abstract class BaseModel {
   /// The ID of the model. In SQLite, the PRIMARY KEY is typically an integer ID.
-  int? id;
+  dynamic id;
 
   BaseModel({this.id});
 
@@ -12,7 +12,7 @@ abstract class BaseModel {
   /// Creates a model object from a [Map<String, dynamic>] structure.
   /// This factory constructor is used for BaseModel itself.
   BaseModel.fromMap(Map<String, dynamic> map) {
-    id = map['id'] as int?;
+    id = map['id'] as dynamic;
   }
 
   /// Returns the name of the database table corresponding to this model.
