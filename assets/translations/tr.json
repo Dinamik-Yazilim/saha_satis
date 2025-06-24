@@ -23,6 +23,11 @@
         "reports": "Raporlar",
         "settings": "Ayarlar"
     },
+    "settings": {
+        "version": "Versiyon",
+        "app_exit": "Uygulamadan Çık",
+        "app_layout": "Uygulama Düzeni"
+    },
     "general": {
         "language": {
             "title": "Türkçe",

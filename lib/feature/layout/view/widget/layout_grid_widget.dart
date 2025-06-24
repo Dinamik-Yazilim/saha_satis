@@ -1,12 +1,17 @@
 part of '../layout_view.dart';
 
-class _MenuItemTile extends StatelessWidget {
+class _LayoutGridWidget extends StatelessWidget {
   final MenuItem menuItem;
   final VoidCallback? onTap;
   final Color cardBaseColor;
   final Color contentColor;
 
-  const _MenuItemTile({required this.menuItem, this.onTap, required this.cardBaseColor, required this.contentColor});
+  const _LayoutGridWidget({
+    required this.menuItem,
+    this.onTap,
+    required this.cardBaseColor,
+    required this.contentColor,
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -16,7 +16,7 @@ class MenuRepository {
           id: 'alis_faturasi',
           title: LocaleKeys.menu_purchase_invoice,
           icon: Icons.description,
-          route: const SettingRoute(),
+          route: const HomeRoute(),
           requiredPermissions: ['can_view_purchase_invoice'],
         ),
         MenuItem(

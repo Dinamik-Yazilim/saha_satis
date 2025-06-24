@@ -13,6 +13,7 @@ class AppSettingModel extends BaseModel {
   String? refreshToken;
   String? authTokenType;
   int? expiresIn;
+  String? appLayout;
 
   AppSettingModel({
     super.id,
@@ -27,6 +28,7 @@ class AppSettingModel extends BaseModel {
     this.authTokenType,
     this.expiresIn,
     this.isGuestUser = false,
+    this.appLayout = 'grid',
   });
 
   /// Map'ten AppSettingModel oluşturur.
@@ -44,6 +46,7 @@ class AppSettingModel extends BaseModel {
       authTokenType: map['authTokenType'] as String?,
       expiresIn: map['expiresIn'] as int?,
       isGuestUser: (map['isGuestUser'] as int?) == 1,
+      appLayout: map['appLayout'] as String? ?? 'grid',
     );
   }
 
@@ -62,6 +65,7 @@ class AppSettingModel extends BaseModel {
       'authTokenType': authTokenType,
       'expiresIn': expiresIn,
       'isGuestUser': isGuestUser! ? 1 : 0,
+      'appLayout': appLayout ?? 'grid ',
     };
   }
 

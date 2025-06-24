@@ -24,6 +24,10 @@ abstract class  LocaleKeys {
   static const menu_reports = 'menu.reports';
   static const menu_settings = 'menu.settings';
   static const menu = 'menu';
+  static const settings_version = 'settings.version';
+  static const settings_app_exit = 'settings.app_exit';
+  static const settings_app_layout = 'settings.app_layout';
+  static const settings = 'settings';
   static const general_language_title = 'general.language.title';
   static const general_language_change_language = 'general.language.change_language';
   static const general_language = 'general.language';

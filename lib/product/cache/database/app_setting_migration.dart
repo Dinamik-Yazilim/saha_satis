@@ -23,6 +23,7 @@ class AppSettingMigration extends Migration {
           'authTokenType': String,
           'expiresIn': int,
           'isGuestUser': bool,
+          'appLayout': String,
         },
         'id',
         autoIncrement: true,

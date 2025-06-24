@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../cache/models/app_setting_model.dart'; // Ensure correct path to AppSettingModel
 import '../base/base_cubit.dart';
+import '../layout_menu/model/app_layout_enum.dart';
 import 'product_state.dart';
 
 /// ViewModel responsible for managing product-specific state, including theme and authentication.
@@ -30,6 +31,13 @@ final class ProductViewModel extends BaseCubit<ProductState> {
     _saveSettings((settings) => settings.authToken = token, 'Auth Token');
   }
 
+  /// Changes the application layout and persists it to the database.
+  /// [appLayout] is the new application layout, represented by [AppLayouts] enum.
+  void changeAppLayout(AppLayouts appLayout) {
+    emit(state.copyWith(appLayout: appLayout.toShortString()));
+    _saveSettings((settings) => settings.appLayout = appLayout.toShortString(), 'App Layout');
+  }
+
   /// Loads all saved application settings (theme, token, etc.) from the database on app startup.
   Future<void> _loadInitialSettings() async {
     try {
@@ -53,9 +61,12 @@ final class ProductViewModel extends BaseCubit<ProductState> {
         // Load token (default to empty string if null)
         final loadedAuthToken = settings.authToken ?? '';
 
-        emit(state.copyWith(themeMode: loadedThemeMode, authToken: loadedAuthToken));
+        // Load app layout (default to 'grid' if null or unrecognized)
+        final loadedAppLayout = settings.appLayout ?? AppLayouts.grid.toShortString();
+
+        emit(state.copyWith(themeMode: loadedThemeMode, authToken: loadedAuthToken, appLayout: loadedAppLayout));
         AppLogger.info(
-          'Saved initial settings loaded. Theme: ${loadedThemeMode.name}, Token: ${loadedAuthToken.isNotEmpty ? 'Loaded' : 'Not found'}',
+          'Saved initial settings loaded. Theme: ${loadedThemeMode.name}, Token: ${loadedAuthToken.isNotEmpty ? 'Loaded' : 'Not found'}, App Layout: $loadedAppLayout',
         );
       } else {
         AppLogger.info('App settings not found or null, default values are being used.');
@@ -93,6 +104,8 @@ final class ProductViewModel extends BaseCubit<ProductState> {
         savedValue = settings.themeMode ?? 'N/A';
       } else if (logMessagePrefix == 'Auth Token') {
         savedValue = settings.authToken?.isNotEmpty == true ? 'Saved' : 'Cleared';
+      } else if (logMessagePrefix == 'App Layout') {
+        savedValue = settings.appLayout ?? 'N/A';
       } else {
         savedValue = 'Value updated'; // Generic fallback for other potential updates
       }

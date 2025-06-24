@@ -23,6 +23,11 @@
         "reports": "Reports",
         "settings": "Settings"
     },
+    "settings": {
+        "version": "Version",
+        "app_exit": "Exit Application",
+        "app_layout": "Application Layout"
+    },
     "general": {
         "language": {
             "title": "English",

@@ -10,6 +10,7 @@ mixin SettingMixin on BaseState<SettingView> {
   void initState() {
     super.initState();
   }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
