@@ -7,11 +7,12 @@ class StockSalesPricesMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'STOK_SATIS_FIYAT_LISTELERI' table in the local Sqflite database.
+    // This method creates the 'stock_sales_prices' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'STOK_SATIS_FIYAT_LISTELERI', // The table name in Sqflite.
+         autoIncrement: false,
+        'stock_sales_prices', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to sfiyat_Guid AS id (GUIDs stored as String)
@@ -33,14 +34,14 @@ class StockSalesPricesMigration extends Migration {
       ),
     );
     AppLogger.info(
-      'StockSalesPricesMigration: STOK_SATIS_FIYAT_LISTELERI table successfully created with aliased columns.',
+      'StockSalesPricesMigration: stock_sales_prices table successfully created with aliased columns.',
     );
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'STOK_SATIS_FIYAT_LISTELERI' table.
-    await txn.execute('DROP TABLE IF EXISTS STOK_SATIS_FIYAT_LISTELERI');
-    AppLogger.info('StockSalesPricesMigration: STOK_SATIS_FIYAT_LISTELERI table dropped.');
+    // This method handles the dropping (deletion) of the 'stock_sales_prices' table.
+    await txn.execute('DROP TABLE IF EXISTS stock_sales_prices');
+    AppLogger.info('StockSalesPricesMigration: stock_sales_prices table dropped.');
   }
 }

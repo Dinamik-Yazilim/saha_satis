@@ -7,11 +7,12 @@ class OrdersMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'SIPARISLER' table in the local Sqflite database.
+    // This method creates the 'orders' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'SIPARISLER', // The table name in Sqflite.
+         autoIncrement: false,
+        'orders', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to sip_Guid AS id (GUIDs stored as String)
@@ -52,13 +53,13 @@ class OrdersMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('OrdersMigration: SIPARISLER table successfully created with aliased columns.');
+    AppLogger.info('OrdersMigration: orders table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'SIPARISLER' table.
-    await txn.execute('DROP TABLE IF EXISTS SIPARISLER');
-    AppLogger.info('OrdersMigration: SIPARISLER table dropped.');
+    // This method handles the dropping (deletion) of the 'orders' table.
+    await txn.execute('DROP TABLE IF EXISTS orders');
+    AppLogger.info('OrdersMigration: orders table dropped.');
   }
 }

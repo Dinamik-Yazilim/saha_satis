@@ -7,11 +7,12 @@ class StocksMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'STOKLAR' table in the local Sqflite database.
+    // This method creates the 'stocks' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'STOKLAR', // The table name in Sqflite.
+         autoIncrement: false,
+        'stocks', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to sto_Guid AS id (GUIDs stored as String)
@@ -51,13 +52,13 @@ class StocksMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('StocksMigration: STOKLAR table successfully created with aliased columns.');
+    AppLogger.info('StocksMigration: stocks table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'STOKLAR' table.
-    await txn.execute('DROP TABLE IF EXISTS STOKLAR');
-    AppLogger.info('StocksMigration: STOKLAR table dropped.');
+    // This method handles the dropping (deletion) of the 'stocks' table.
+    await txn.execute('DROP TABLE IF EXISTS stocks');
+    AppLogger.info('StocksMigration: stocks table dropped.');
   }
 }

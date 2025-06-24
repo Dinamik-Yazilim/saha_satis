@@ -7,11 +7,12 @@ class CustomerAccountMovementsMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'CARI_HESAP_HAREKETLERI' table in the local Sqflite database.
+    // This method creates the 'customer_account_movements' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'CARI_HESAP_HAREKETLERI', // The table name in Sqflite.
+         autoIncrement: false,
+        'customer_account_movements', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to cha_Guid AS id (GUIDs stored as String)
@@ -77,14 +78,14 @@ class CustomerAccountMovementsMigration extends Migration {
       ),
     );
     AppLogger.info(
-      'CustomerAccountMovementsMigration: CARI_HESAP_HAREKETLERI table successfully created with aliased columns.',
+      'CustomerAccountMovementsMigration: customer_account_movements table successfully created with aliased columns.',
     );
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'CARI_HESAP_HAREKETLERI' table.
-    await txn.execute('DROP TABLE IF EXISTS CARI_HESAP_HAREKETLERI');
-    AppLogger.info('CustomerAccountMovementsMigration: CARI_HESAP_HAREKETLERI table dropped.');
+    // This method handles the dropping (deletion) of the 'customer_account_movements' table.
+    await txn.execute('DROP TABLE IF EXISTS customer_account_movements');
+    AppLogger.info('CustomerAccountMovementsMigration: customer_account_movements table dropped.');
   }
 }

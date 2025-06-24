@@ -7,11 +7,12 @@ class PaymentPlansMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'ODEME_PLANLARI' table in the local Sqflite database.
+    // This method creates the 'payment_plans' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'ODEME_PLANLARI', // The table name in Sqflite.
+         autoIncrement: false,
+        'payment_plans', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to odp_Guid AS id (GUIDs stored as String)
@@ -28,13 +29,13 @@ class PaymentPlansMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('PaymentPlansMigration: ODEME_PLANLARI table successfully created with aliased columns.');
+    AppLogger.info('PaymentPlansMigration: payment_plans table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'ODEME_PLANLARI' table.
-    await txn.execute('DROP TABLE IF EXISTS ODEME_PLANLARI');
-    AppLogger.info('PaymentPlansMigration: ODEME_PLANLARI table dropped.');
+    // This method handles the dropping (deletion) of the 'payment_plans' table.
+    await txn.execute('DROP TABLE IF EXISTS payment_plans');
+    AppLogger.info('PaymentPlansMigration: payment_plans table dropped.');
   }
 }

@@ -7,11 +7,12 @@ class ResponsibilityCentersMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'SORUMLULUK_MERKEZLERI' table in the local Sqflite database.
+    // This method creates the 'responsibility_centers' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'SORUMLULUK_MERKEZLERI', // The table name in Sqflite.
+         autoIncrement: false,
+        'responsibility_centers', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to som_Guid AS id (GUIDs stored as String)
@@ -28,14 +29,14 @@ class ResponsibilityCentersMigration extends Migration {
       ),
     );
     AppLogger.info(
-      'ResponsibilityCentersMigration: SORUMLULUK_MERKEZLERI table successfully created with aliased columns.',
+      'ResponsibilityCentersMigration: responsibility_centers table successfully created with aliased columns.',
     );
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'SORUMLULUK_MERKEZLERI' table.
-    await txn.execute('DROP TABLE IF EXISTS SORUMLULUK_MERKEZLERI');
-    AppLogger.info('ResponsibilityCentersMigration: SORUMLULUK_MERKEZLERI table dropped.');
+    // This method handles the dropping (deletion) of the 'responsibility_centers' table.
+    await txn.execute('DROP TABLE IF EXISTS responsibility_centers');
+    AppLogger.info('ResponsibilityCentersMigration: responsibility_centers table dropped.');
   }
 }

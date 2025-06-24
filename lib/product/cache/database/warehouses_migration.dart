@@ -7,11 +7,12 @@ class WarehousesMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'DEPOLAR' table in the local Sqflite database.
+    // This method creates the 'warehouses' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'DEPOLAR', // The table name in Sqflite.
+        autoIncrement: false,
+        'warehouses', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to dep_Guid AS id (GUIDs stored as String)
@@ -27,13 +28,13 @@ class WarehousesMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('WarehousesMigration: DEPOLAR table successfully created with aliased columns.');
+    AppLogger.info('WarehousesMigration: warehouses table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'DEPOLAR' table.
-    await txn.execute('DROP TABLE IF EXISTS DEPOLAR');
-    AppLogger.info('WarehousesMigration: DEPOLAR table dropped.');
+    // This method handles the dropping (deletion) of the 'warehouses' table.
+    await txn.execute('DROP TABLE IF EXISTS warehouses');
+    AppLogger.info('WarehousesMigration: warehouses table dropped.');
   }
 }

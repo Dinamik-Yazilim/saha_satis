@@ -7,11 +7,12 @@ class PersonnelDefinitionsMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'CARI_PERSONEL_TANIMLARI' table in the local Sqflite database.
+    // This method creates the 'personnel_definitions' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'CARI_PERSONEL_TANIMLARI', // The table name in Sqflite.
+         autoIncrement: false,
+        'personnel_definitions', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to cari_per_Guid AS id (GUIDs stored as String)
@@ -36,14 +37,14 @@ class PersonnelDefinitionsMigration extends Migration {
       ),
     );
     AppLogger.info(
-      'PersonnelDefinitionsMigration: CARI_PERSONEL_TANIMLARI table successfully created with aliased columns.',
+      'PersonnelDefinitionsMigration: personnel_definitions table successfully created with aliased columns.',
     );
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'CARI_PERSONEL_TANIMLARI' table.
-    await txn.execute('DROP TABLE IF EXISTS CARI_PERSONEL_TANIMLARI');
-    AppLogger.info('PersonnelDefinitionsMigration: CARI_PERSONEL_TANIMLARI table dropped.');
+    // This method handles the dropping (deletion) of the 'personnel_definitions' table.
+    await txn.execute('DROP TABLE IF EXISTS personnel_definitions');
+    AppLogger.info('PersonnelDefinitionsMigration: personnel_definitions table dropped.');
   }
 }

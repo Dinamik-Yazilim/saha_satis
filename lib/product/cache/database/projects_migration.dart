@@ -7,11 +7,12 @@ class ProjectsMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'PROJELER' table in the local Sqflite database.
+    // This method creates the 'projects' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'PROJELER', // The table name in Sqflite.
+         autoIncrement: false,
+        'projects', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to pro_Guid AS id (GUIDs stored as String)
@@ -41,13 +42,13 @@ class ProjectsMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('ProjectsMigration: PROJELER table successfully created with aliased columns.');
+    AppLogger.info('ProjectsMigration: projects table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'PROJELER' table.
-    await txn.execute('DROP TABLE IF EXISTS PROJELER');
-    AppLogger.info('ProjectsMigration: PROJELER table dropped.');
+    // This method handles the dropping (deletion) of the 'projects' table.
+    await txn.execute('DROP TABLE IF EXISTS projects');
+    AppLogger.info('ProjectsMigration: projects table dropped.');
   }
 }

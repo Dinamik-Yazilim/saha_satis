@@ -7,11 +7,12 @@ class CashboxesMigration extends Migration {
 
   @override
   Future<void> up(Transaction txn) async {
-    // This method creates the 'KASALAR' table in the local Sqflite database.
+    // This method creates the 'cash_boxes' table in the local Sqflite database.
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-        'KASALAR', // The table name in Sqflite.
+         autoIncrement: false,
+        'cash_boxes', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to kas_Guid AS id (GUIDs stored as String)
@@ -27,13 +28,13 @@ class CashboxesMigration extends Migration {
         // autoIncrement is not needed here as 'id' will be a GUID string.
       ),
     );
-    AppLogger.info('CashboxesMigration: KASALAR table successfully created with aliased columns.');
+    AppLogger.info('CashboxesMigration: cash_boxes table successfully created with aliased columns.');
   }
 
   @override
   Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'KASALAR' table.
-    await txn.execute('DROP TABLE IF EXISTS KASALAR');
-    AppLogger.info('CashboxesMigration: KASALAR table dropped.');
+    // This method handles the dropping (deletion) of the 'cash_boxes' table.
+    await txn.execute('DROP TABLE IF EXISTS cash_boxes');
+    AppLogger.info('CashboxesMigration: cash_boxes table dropped.');
   }
 }
