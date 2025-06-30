@@ -1,12 +1,14 @@
-import 'package:core/core.dart'; // Core library for AppLogger and GenericRepository
+import 'dart:convert'; 
+import 'package:core/core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';  
 
-import '../../cache/models/app_setting_model.dart'; // Ensure correct path to AppSettingModel
+import '../../cache/models/app_setting_model.dart';
 import '../base/base_cubit.dart';
 import '../layout_menu/model/app_layout_enum.dart';
 import 'product_state.dart';
 
-/// ViewModel responsible for managing product-specific state, including theme and authentication.
+/// ViewModel responsible for managing product-specific state, including theme, authentication, and sync dates.
 final class ProductViewModel extends BaseCubit<ProductState> {
   /// Repository for interacting with application settings in the database.
   final GenericRepository<AppSettingModel> _appSettingRepository;
@@ -43,7 +45,6 @@ final class ProductViewModel extends BaseCubit<ProductState> {
     try {
       final settings = await _appSettingRepository.getById(1);
       if (settings != null) {
-        // Determine the theme mode from loaded settings
         ThemeMode loadedThemeMode;
         switch (settings.themeMode) {
           case 'light':
@@ -58,10 +59,7 @@ final class ProductViewModel extends BaseCubit<ProductState> {
             break;
         }
 
-        // Load token (default to empty string if null)
         final loadedAuthToken = settings.authToken ?? '';
-
-        // Load app layout (default to 'grid' if null or unrecognized)
         final loadedAppLayout = settings.appLayout ?? AppLayouts.grid.toShortString();
 
         emit(state.copyWith(themeMode: loadedThemeMode, authToken: loadedAuthToken, appLayout: loadedAppLayout));
@@ -84,21 +82,15 @@ final class ProductViewModel extends BaseCubit<ProductState> {
   /// [logMessagePrefix] is a descriptive string used in log messages for clarity.
   Future<void> _saveSettings(Function(AppSettingModel settings) updateFunction, String logMessagePrefix) async {
     try {
-      // Attempt to retrieve the existing settings by ID (assuming ID 1 for app settings)
       AppSettingModel? settings = await _appSettingRepository.getById(1);
       if (settings == null) {
-        // If no settings record exists, create a new one with ID 1
         AppLogger.warning('ID 1 was not found in the App Settings Table, creating a new default setting.');
         settings = AppSettingModel(id: 1);
       }
 
-      // Apply the specific update logic using the provided function
       updateFunction(settings);
-
-      // Save the updated settings back to the database
       await _appSettingRepository.save(settings);
 
-      // Log the successful save operation
       String savedValue = '';
       if (logMessagePrefix == 'Theme mode') {
         savedValue = settings.themeMode ?? 'N/A';
@@ -107,12 +99,71 @@ final class ProductViewModel extends BaseCubit<ProductState> {
       } else if (logMessagePrefix == 'App Layout') {
         savedValue = settings.appLayout ?? 'N/A';
       } else {
-        savedValue = 'Value updated'; // Generic fallback for other potential updates
+        savedValue = 'Value updated';
       }
       AppLogger.info('$logMessagePrefix saved to database: $savedValue');
     } catch (e, stackTrace) {
-      // Log any errors that occur during the save operation
       AppLogger.error('Error occurred when saving $logMessagePrefix: $e', e, stackTrace);
+    }
+  }
+
+  /// Retrieves the last sync date for a specific key from AppSettings.
+  /// Returns '1900-01-01 00:00:00.000' if not found or on error.
+  Future<String> getLastSyncDateFor(String syncKey) async {
+    try {
+      final settings = await _appSettingRepository.getById(1); // Assume ID 1 for settings
+      if (settings != null && settings.lastSyncDate != null && settings.lastSyncDate!.isNotEmpty) {
+        try {
+          final syncDates = jsonDecode(settings.lastSyncDate!) as Map<String, dynamic>;
+          final storedDate = syncDates[syncKey] as String?;
+          if (storedDate != null && storedDate.isNotEmpty) {
+            return storedDate;
+          }
+        } catch (e) {
+          AppLogger.warning(
+            'ProductViewModel: Failed to decode existing lastSyncDate JSON string for $syncKey. Error: $e',
+          );
+        }
+      }
+    } catch (e, st) {
+      AppLogger.error('ProductViewModel: Error reading last sync date for $syncKey: $e', e, st);
+    }
+    return '1900-01-01 00:00:00.000'; // Fallback to full sync date
+  }
+
+  /// Updates the last sync date for a specific key within the AppSettingModel's lastSyncDate JSON string.
+  Future<void> updateLastSyncDateFor(String syncKey) async {
+    try {
+      final now = DateTime.now();
+      final formatter = DateFormat('yyyy-MM-dd HH:mm:ss.SSS');
+      final formattedDate = formatter.format(now);
+
+      AppSettingModel? settings = await _appSettingRepository.getById(1);
+      Map<String, dynamic> syncDates = {};
+
+      if (settings != null && settings.lastSyncDate != null && settings.lastSyncDate!.isNotEmpty) {
+        try {
+          syncDates = jsonDecode(settings.lastSyncDate!) as Map<String, dynamic>;
+        } catch (e) {
+          AppLogger.warning(
+            'ProductViewModel: Failed to decode existing lastSyncDate JSON string for update for $syncKey. Error: $e',
+          );
+          syncDates = {};
+        }
+      } else {
+        settings = AppSettingModel(id: 1);
+        AppLogger.info(
+          'ProductViewModel: AppSettingModel with ID 1 not found or lastSyncDate is empty. Creating new entry.',
+        );
+      }
+
+      syncDates[syncKey] = formattedDate;
+      settings.lastSyncDate = jsonEncode(syncDates);
+
+      await _appSettingRepository.save(settings);
+      AppLogger.info('ProductViewModel: $syncKey last sync date updated to $formattedDate.');
+    } catch (e, st) {
+      AppLogger.error('ProductViewModel: Error updating last sync date for $syncKey: $e', e, st);
     }
   }
 }

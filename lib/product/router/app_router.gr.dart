@@ -89,3 +89,61 @@ class SplashRoute extends PageRouteInfo<void> {
     },
   );
 }
+
+/// generated route for
+/// [SynchronizationView]
+class SynchronizationRoute extends PageRouteInfo<SynchronizationRouteArgs> {
+  SynchronizationRoute({
+    Key? key,
+    bool showAsDialog = false,
+    PageRouteInfo<Object?>? redirectToRoute,
+    required bool clearExisting,
+    List<PageRouteInfo>? children,
+  }) : super(
+         SynchronizationRoute.name,
+         args: SynchronizationRouteArgs(
+           key: key,
+           showAsDialog: showAsDialog,
+           redirectToRoute: redirectToRoute,
+           clearExisting: clearExisting,
+         ),
+         initialChildren: children,
+       );
+
+  static const String name = 'SynchronizationRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SynchronizationRouteArgs>();
+      return SynchronizationView(
+        key: args.key,
+        showAsDialog: args.showAsDialog,
+        redirectToRoute: args.redirectToRoute,
+        clearExisting: args.clearExisting,
+      );
+    },
+  );
+}
+
+class SynchronizationRouteArgs {
+  const SynchronizationRouteArgs({
+    this.key,
+    this.showAsDialog = false,
+    this.redirectToRoute,
+    required this.clearExisting,
+  });
+
+  final Key? key;
+
+  final bool showAsDialog;
+
+  final PageRouteInfo<Object?>? redirectToRoute;
+
+  final bool clearExisting;
+
+  @override
+  String toString() {
+    return 'SynchronizationRouteArgs{key: $key, showAsDialog: $showAsDialog, redirectToRoute: $redirectToRoute, clearExisting: $clearExisting}';
+  }
+}
