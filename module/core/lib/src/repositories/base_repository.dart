@@ -18,6 +18,57 @@ abstract class BaseRepository<T extends BaseModel> {
   /// define it again in `BaseRepository`. You can directly call `model.toMap()`.
   Map<String, dynamic> toMap(T model) => model.toMap();
 
+  /// Saves a list of models into the database.
+  /// It intelligently handles both new inserts and updates using `ConflictAlgorithm.replace`.
+  /// If a model has a non-null ID, it attempts to insert/replace it.
+  /// If a model has a null ID, it simply inserts a new record.
+  /// Uses a transaction for performance and atomicity.
+  Future<List<T>> saveAll(List<T> models) async {
+    final db = await databaseProvider.database;
+    final List<T> savedModels = [];
+
+    try {
+      await db.transaction((txn) async {
+        for (final model in models) {
+          if (model.id == null) {
+            await txn.insert(tableName, toMap(model), conflictAlgorithm: ConflictAlgorithm.replace);
+            AppLogger.debug('New record added (ID null) to $tableName table.');
+            savedModels.add(model);
+          } else {
+            // Existing record: Attempt to update
+            final rowsAffected = await txn.update(
+              tableName,
+              toMap(model),
+              where: 'id = ?',
+              whereArgs: [model.id],
+              conflictAlgorithm: ConflictAlgorithm.replace,
+            );
+
+            if (rowsAffected > 0) {
+              AppLogger.debug('Record with ID: ${model.id} updated in $tableName table.');
+              savedModels.add(model);
+            } else {
+              // Eğer güncelleme başarısız olursa (kayıt bulunamazsa),
+              // bu kaydı yeni bir ekleme olarak dene.
+              //AppLogger.warning('Record with ID: ${model.id} not found for update. Attempting insert as new record.');
+              await txn.insert(
+                tableName,
+                toMap(model),
+                conflictAlgorithm: ConflictAlgorithm.replace, // Var olanı değiştir veya yeni ekle
+              );
+              savedModels.add(model);
+            }
+          }
+        }
+      });
+      AppLogger.debug('${savedModels.length} records processed and saved in $tableName table via saveAll.');
+      return savedModels;
+    } catch (e, stackTrace) {
+      AppLogger.error('Error occurred while saving multiple records in saveAll: $e', e, stackTrace);
+      throw DatabaseException('Could not save all records: $e');
+    }
+  }
+
   /// Inserts a new record into the database or updates an existing one.
   Future<T> save(T model) async {
     final db = await databaseProvider.database;
