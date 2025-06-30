@@ -11,18 +11,18 @@ class PaymentPlansMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'payment_plans', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to odp_Guid AS id (GUIDs stored as String)
-          'no': String, // Corresponds to odp_no AS no
+          'no': int, // Corresponds to odp_no AS no
           'code': String, // Corresponds to odp_kodu AS code
           'name': String, // Corresponds to odp_adi AS name
           'subtotal': double, // Corresponds to odp_aratop AS subtotal (assuming numeric type for monetary values)
-          'createdBy': String, // Corresponds to odp_create_user AS createdBy
+          'createdBy': int, // Corresponds to odp_create_user AS createdBy
           'createdAt': String, // Corresponds to odp_create_date AS createdAt
-          'updatedBy': String, // Corresponds to odp_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to odp_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to odp_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

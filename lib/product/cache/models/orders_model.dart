@@ -1,15 +1,15 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class OrderModel extends BaseModel {
-  final String? kind;
-  final String? type;
+  final int? kind;
+  final int? type;
   final String? documentSerialNo;
-  final String? documentSequenceNo;
+  final int? documentSequenceNo;
   final int? documentLineNo;
   final String? vendorCode;
   final double? unitPrice;
   final double? quantity;
-  final String? unitPointer;
+  final int? unitPointer;
   final double? deliveredQuantity;
   final double? amount;
   final double? discount1;
@@ -22,16 +22,16 @@ class OrderModel extends BaseModel {
   final double? expense2;
   final double? expense3;
   final double? expense4;
-  final String? taxPointer;
+  final int? taxPointer;
   final double? taxAmount;
   final String? description;
   final String? description2;
-  final String? warehouseNo;
+  final int? warehouseNo;
   final double? currencyRate;
   final double? exchangeRate;
-  final String? createdBy;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   OrderModel({
@@ -74,15 +74,15 @@ class OrderModel extends BaseModel {
   factory OrderModel.fromMap(Map<String, dynamic> map) {
     return OrderModel(
       id: map['id'] as String?,
-      kind: map['kind'] as String?,
-      type: map['type'] as String?,
+      kind: map['kind'] as int?,
+      type: map['type'] as int?,
       documentSerialNo: map['documentSerialNo'] as String?,
-      documentSequenceNo: map['documentSequenceNo'] as String?,
+      documentSequenceNo: map['documentSequenceNo'] as int?,
       documentLineNo: map['documentLineNo'] as int?,
       vendorCode: map['vendorCode'] as String?,
       unitPrice: (map['unitPrice'] as num?)?.toDouble(),
       quantity: (map['quantity'] as num?)?.toDouble(),
-      unitPointer: map['unitPointer'] as String?,
+      unitPointer: map['unitPointer'] as int?,
       deliveredQuantity: (map['deliveredQuantity'] as num?)?.toDouble(),
       amount: (map['amount'] as num?)?.toDouble(),
       discount1: (map['discount1'] as num?)?.toDouble(),
@@ -95,16 +95,16 @@ class OrderModel extends BaseModel {
       expense2: (map['expense2'] as num?)?.toDouble(),
       expense3: (map['expense3'] as num?)?.toDouble(),
       expense4: (map['expense4'] as num?)?.toDouble(),
-      taxPointer: map['taxPointer'] as String?,
+      taxPointer: map['taxPointer'] as int?,
       taxAmount: (map['taxAmount'] as num?)?.toDouble(),
       description: map['description'] as String?,
       description2: map['description2'] as String?,
-      warehouseNo: map['warehouseNo'] as String?,
+      warehouseNo: map['warehouseNo'] as int?,
       currencyRate: (map['currencyRate'] as num?)?.toDouble(),
       exchangeRate: (map['exchangeRate'] as num?)?.toDouble(),
-      createdBy: map['createdBy'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -148,7 +148,7 @@ class OrderModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'SIPARISLER';
+  static String get staticTableName => 'orders';
 
   @override
   String get tableName => staticTableName;

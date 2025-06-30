@@ -16,12 +16,12 @@ class WarehousesMigration extends Migration {
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to dep_Guid AS id (GUIDs stored as String)
-          'no': String, // Corresponds to dep_no AS no
+          'no': int, // Corresponds to dep_no AS no
           'name': String, // Corresponds to dep_adi AS name
-          'type': String, // Corresponds to dep_tipi AS type
-          'createdBy': String, // Corresponds to dep_create_user AS createdBy
+          'type': int, // Corresponds to dep_tipi AS type
+          'createdBy': int, // Corresponds to dep_create_user AS createdBy
           'createdAt': String, // Corresponds to dep_create_date AS createdAt
-          'updatedBy': String, // Corresponds to dep_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to dep_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to dep_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

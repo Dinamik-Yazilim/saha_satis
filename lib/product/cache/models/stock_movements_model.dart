@@ -1,11 +1,11 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class StockMovementModel extends BaseModel {
-  final String? type;
-  final String? kind;
-  final String? documentType;
+  final int? type;
+  final int? kind;
+  final int? documentType;
   final String? documentSerialNo;
-  final String? documentSequenceNo;
+  final int? documentSequenceNo;
   final int? documentLineNo;
   final String? documentNo;
   final String? documentDate; // ISO8601 string
@@ -15,7 +15,7 @@ class StockMovementModel extends BaseModel {
   final double? exchangeRate;
   final double? quantity;
   final double? quantity2;
-  final String? unitPointer;
+  final int? unitPointer;
   final double? amount;
   final double? discount1;
   final double? discount2;
@@ -27,21 +27,21 @@ class StockMovementModel extends BaseModel {
   final double? expense2;
   final double? expense3;
   final double? expense4;
-  final String? taxPointer;
+  final int? taxPointer;
   final double? taxAmount;
   final String? description;
   final String? orderUid;
   final String? invoiceUid;
-  final String? entryWarehouseNo;
-  final String? exitWarehouseNo;
+  final int? entryWarehouseNo;
+  final int? exitWarehouseNo;
   final String? goodsReceiptShipmentDate; // ISO8601 string
   final String? accountResponsibilityCenter;
   final double? costMain;
   final double? costAlternative;
   final double? costOriginal;
-  final String? createdBy;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   StockMovementModel({
@@ -94,11 +94,11 @@ class StockMovementModel extends BaseModel {
   factory StockMovementModel.fromMap(Map<String, dynamic> map) {
     return StockMovementModel(
       id: map['id'] as String?,
-      type: map['type'] as String?,
-      kind: map['kind'] as String?,
-      documentType: map['documentType'] as String?,
+      type: map['type'] as int?,
+      kind: map['kind'] as int?,
+      documentType: map['documentType'] as int?,
       documentSerialNo: map['documentSerialNo'] as String?,
-      documentSequenceNo: map['documentSequenceNo'] as String?,
+      documentSequenceNo: map['documentSequenceNo'] as int?,
       documentLineNo: map['documentLineNo'] as int?,
       documentNo: map['documentNo'] as String?,
       documentDate: map['documentDate'] as String?,
@@ -108,7 +108,7 @@ class StockMovementModel extends BaseModel {
       exchangeRate: (map['exchangeRate'] as num?)?.toDouble(),
       quantity: (map['quantity'] as num?)?.toDouble(),
       quantity2: (map['quantity2'] as num?)?.toDouble(),
-      unitPointer: map['unitPointer'] as String?,
+      unitPointer: map['unitPointer'] as int?,
       amount: (map['amount'] as num?)?.toDouble(),
       discount1: (map['discount1'] as num?)?.toDouble(),
       discount2: (map['discount2'] as num?)?.toDouble(),
@@ -120,21 +120,21 @@ class StockMovementModel extends BaseModel {
       expense2: (map['expense2'] as num?)?.toDouble(),
       expense3: (map['expense3'] as num?)?.toDouble(),
       expense4: (map['expense4'] as num?)?.toDouble(),
-      taxPointer: map['taxPointer'] as String?,
+      taxPointer: map['taxPointer'] as int?,
       taxAmount: (map['taxAmount'] as num?)?.toDouble(),
       description: map['description'] as String?,
       orderUid: map['orderUid'] as String?,
       invoiceUid: map['invoiceUid'] as String?,
-      entryWarehouseNo: map['entryWarehouseNo'] as String?,
-      exitWarehouseNo: map['exitWarehouseNo'] as String?,
+      entryWarehouseNo: map['entryWarehouseNo'] as int?,
+      exitWarehouseNo: map['exitWarehouseNo'] as int?,
       goodsReceiptShipmentDate: map['goodsReceiptShipmentDate'] as String?,
       accountResponsibilityCenter: map['accountResponsibilityCenter'] as String?,
       costMain: (map['costMain'] as num?)?.toDouble(),
       costAlternative: (map['costAlternative'] as num?)?.toDouble(),
       costOriginal: (map['costOriginal'] as num?)?.toDouble(),
-      createdBy: map['createdBy'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -188,7 +188,7 @@ class StockMovementModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'STOK_HAREKETLERI';
+  static String get staticTableName => 'stock_movements';
 
   @override
   String get tableName => staticTableName;

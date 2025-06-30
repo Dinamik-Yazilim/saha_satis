@@ -11,24 +11,24 @@ class CustomerAccountMovementsMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'customer_account_movements', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to cha_Guid AS id (GUIDs stored as String)
-          'companyNo': String, // Corresponds to cha_firmano AS companyNo
-          'branchNo': String, // Corresponds to cha_subeno AS branchNo
-          'documentType': String, // Corresponds to cha_evrak_tip AS documentType
+          'companyNo': int, // Corresponds to cha_firmano AS companyNo
+          'branchNo': int, // Corresponds to cha_subeno AS branchNo
+          'documentType': int, // Corresponds to cha_evrak_tip AS documentType
           'documentSerialNo': String, // Corresponds to cha_evrakno_seri AS documentSerialNo
-          'documentSequenceNo': String, // Corresponds to cha_evrakno_sira AS documentSequenceNo
+          'documentSequenceNo': int, // Corresponds to cha_evrakno_sira AS documentSequenceNo
           'documentLineNo': int, // Corresponds to cha_satir_no AS documentLineNo
-          'type': String, // Corresponds to cha_tip AS type
-          'kind': String, // Corresponds to cha_cinsi AS kind
+          'type': int, // Corresponds to cha_tip AS type
+          'kind': int, // Corresponds to cha_cinsi AS kind
           'documentNo': String, // Corresponds to cha_belge_no AS documentNo
           'documentDate': String, // Corresponds to cha_belge_tarih AS documentDate
           'description': String, // Corresponds to cha_aciklama AS description
           'vendorCode': String, // Corresponds to cha_satici_kodu AS vendorCode
-          'accountKind': String, // Corresponds to cha_cari_cins AS accountKind
+          'accountKind': int, // Corresponds to cha_cari_cins AS accountKind
           'code': String, // Corresponds to cha_kod AS code
           'turnoverAccountCode': String, // Corresponds to cha_ciro_cari_kodu AS turnoverAccountCode
           'exchangeRate': double, // Corresponds to cha_altd_kur AS exchangeRate
@@ -37,7 +37,7 @@ class CustomerAccountMovementsMigration extends Migration {
           'quantity': double, // Corresponds to cha_miktari AS quantity
           'amount': double, // Corresponds to cha_meblag AS amount
           'subtotal': double, // Corresponds to cha_aratoplam AS subtotal
-          'dueDate': String, // Corresponds to cha_vade AS dueDate
+          'dueDate': int, // Corresponds to cha_vade AS dueDate
           'invoiceDiscount1': double, // Corresponds to cha_ft_iskonto1 AS invoiceDiscount1
           'invoiceDiscount2': double, // Corresponds to cha_ft_iskonto2 AS invoiceDiscount2
           'invoiceDiscount3': double, // Corresponds to cha_ft_iskonto3 AS invoiceDiscount3
@@ -68,9 +68,9 @@ class CustomerAccountMovementsMigration extends Migration {
           'tax18': double, // Corresponds to cha_vergi18 AS tax18
           'tax19': double, // Corresponds to cha_vergi19 AS tax19
           'tax20': double, // Corresponds to cha_vergi20 AS tax20
-          'createdBy': String, // Corresponds to cha_create_user AS createdBy
+          'createdBy': int, // Corresponds to cha_create_user AS createdBy
           'createdAt': String, // Corresponds to cha_create_date AS createdAt
-          'updatedBy': String, // Corresponds to cha_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to cha_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to cha_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

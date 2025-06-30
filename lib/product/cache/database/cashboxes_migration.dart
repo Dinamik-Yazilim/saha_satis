@@ -18,10 +18,10 @@ class CashboxesMigration extends Migration {
           'id': String, // Corresponds to kas_Guid AS id (GUIDs stored as String)
           'code': String, // Corresponds to kas_kod AS code
           'name': String, // Corresponds to kas_isim AS name
-          'type': String, // Corresponds to kas_tip AS type
-          'createdBy': String, // Corresponds to kas_create_user AS createdBy
+          'type': int, // Corresponds to kas_tip AS type
+          'createdBy': int, // Corresponds to kas_create_user AS createdBy
           'createdAt': String, // Corresponds to kas_create_date AS createdAt
-          'updatedBy': String, // Corresponds to kas_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to kas_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to kas_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

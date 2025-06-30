@@ -1,12 +1,12 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class WarehouseModel extends BaseModel {
-  final String? no;
+  final int? no;
   final String? name;
-  final String? type;
-  final String? createdBy;
+  final int? type;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   WarehouseModel({
@@ -24,12 +24,12 @@ class WarehouseModel extends BaseModel {
   factory WarehouseModel.fromMap(Map<String, dynamic> map) {
     return WarehouseModel(
       id: map['id'] as String?,
-      no: map['no'] as String?,
+      no: map['no'] as int?,
       name: map['name'] as String?,
-      type: map['type'] as String?,
-      createdBy: map['createdBy'] as String?,
+      type: map['type'] as int?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -48,7 +48,7 @@ class WarehouseModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'DEPOLAR';
+  static String get staticTableName => 'warehouses';
 
   @override
   String get tableName => staticTableName;

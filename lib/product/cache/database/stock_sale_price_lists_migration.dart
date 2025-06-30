@@ -11,20 +11,20 @@ class StockSalePriceListsMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'stock_sale_price_lists', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to sfl_Guid AS id (GUIDs stored as String)
-          'sequenceNo': String, // Corresponds to sfl_sirano AS sequenceNo
+          'sequenceNo': int, // Corresponds to sfl_sirano AS sequenceNo
           'description': String, // Corresponds to sfl_aciklama AS description
           'vatIncluded': bool, // Corresponds to sfl_kdvdahil AS vatIncluded (boolean)
           'startDate': String, // Corresponds to sfl_ilktarih AS startDate (Dates stored as ISO 8601 Strings)
           'endDate': String, // Corresponds to sfl_sontarih AS endDate (Dates stored as ISO 8601 Strings)
-          'appliedPrice': String, // Corresponds to sfl_yerineuygulanacakfiyat AS appliedPrice
-          'createdBy': String, // Corresponds to sfl_create_user AS createdBy
+          'appliedPrice': int, // Corresponds to sfl_yerineuygulanacakfiyat AS appliedPrice
+          'createdBy': int, // Corresponds to sfl_create_user AS createdBy
           'createdAt': String, // Corresponds to sfl_create_date AS createdAt
-          'updatedBy': String, // Corresponds to sfl_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to sfl_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to sfl_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

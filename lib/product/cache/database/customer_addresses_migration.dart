@@ -39,13 +39,13 @@ class CustomerAddressesMigration extends Migration {
           'gpsLongitude': double,
           // Corresponds to adr_gps_boylam AS gpsLongitude (store as String, convert to double in Dart if needed)
           'visitWeek': int, // Corresponds to adr_ziyarethaftasi AS visitWeek
-          'visitDay2_1': int, // Corresponds to adr_ziygunu2_1 AS visitDay2_1
-          'visitDay2_2': int, // Corresponds to adr_ziygunu2_2 AS visitDay2_2
-          'visitDay2_3': int, // Corresponds to adr_ziygunu2_3 AS visitDay2_3
-          'visitDay2_4': int, // Corresponds to adr_ziygunu2_4 AS visitDay2_4
-          'visitDay2_5': int, // Corresponds to adr_ziygunu2_5 AS visitDay2_5
-          'visitDay2_6': int, // Corresponds to adr_ziygunu2_6 AS visitDay2_6
-          'visitDay2_7': int, // Corresponds to adr_ziygunu2_7 AS visitDay2_7
+          'visitDay2_1': bool, // Corresponds to adr_ziygunu2_1 AS visitDay2_1
+          'visitDay2_2': bool, // Corresponds to adr_ziygunu2_2 AS visitDay2_2
+          'visitDay2_3': bool, // Corresponds to adr_ziygunu2_3 AS visitDay2_3
+          'visitDay2_4': bool, // Corresponds to adr_ziygunu2_4 AS visitDay2_4
+          'visitDay2_5': bool, // Corresponds to adr_ziygunu2_5 AS visitDay2_5
+          'visitDay2_6': bool, // Corresponds to adr_ziygunu2_6 AS visitDay2_6
+          'visitDay2_7': bool, // Corresponds to adr_ziygunu2_7 AS visitDay2_7
           'eInvoiceAlias': String, // Corresponds to adr_efatura_alias AS eInvoiceAlias
           'createdBy': int, // Corresponds to adr_create_user AS createdBy
           'createdAt': String, // Corresponds to adr_create_date AS createdAt

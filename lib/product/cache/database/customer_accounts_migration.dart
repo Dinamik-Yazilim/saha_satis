@@ -11,7 +11,7 @@ class CustomerAccountsMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'customer_accounts', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
@@ -27,7 +27,7 @@ class CustomerAccountsMigration extends Migration {
           'taxOfficeCode': String, // Corresponds to cari_vergidairekodu AS taxOfficeCode
           'naceCode1': String, // Corresponds to cari_nacekodu_1 AS naceCode1
           'naceCode2': String, // Corresponds to cari_nacekodu_2 AS naceCode2
-          'companyType': String, // Corresponds to cari_sirket_turu AS companyType
+          'companyType': int, // Corresponds to cari_sirket_turu AS companyType
           'createdBy': int, // Corresponds to cari_create_user AS createdBy
           'createdAt': String, // Corresponds to cari_create_date AS createdAt
           'updatedBy': int, // Corresponds to cari_lastup_user AS updatedBy

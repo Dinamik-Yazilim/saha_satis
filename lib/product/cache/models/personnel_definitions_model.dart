@@ -4,17 +4,17 @@ class PersonnelDefinitionModel extends BaseModel {
   final String? personnelCode;
   final String? firstName;
   final String? lastName;
-  final String? type;
-  final String? currencyType;
-  final String? userNo;
-  final String? warehouseNo;
+  final int? type;
+  final int? currencyType;
+  final int? userNo;
+  final int? warehouseNo;
   final String? mobilePhone;
   final String? email;
   final String? calendarCode;
   final String? identityNo;
-  final String? createdBy;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   PersonnelDefinitionModel({
@@ -43,17 +43,17 @@ class PersonnelDefinitionModel extends BaseModel {
       personnelCode: map['personnelCode'] as String?,
       firstName: map['firstName'] as String?,
       lastName: map['lastName'] as String?,
-      type: map['type'] as String?,
-      currencyType: map['currencyType'] as String?,
-      userNo: map['userNo'] as String?,
-      warehouseNo: map['warehouseNo'] as String?,
+      type: map['type'] as int?,
+      currencyType: map['currencyType'] as int?,
+      userNo: map['userNo'] as int?,
+      warehouseNo: map['warehouseNo'] as int?,
       mobilePhone: map['mobilePhone'] as String?,
       email: map['email'] as String?,
       calendarCode: map['calendarCode'] as String?,
       identityNo: map['identityNo'] as String?,
-      createdBy: map['createdBy'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -80,7 +80,7 @@ class PersonnelDefinitionModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'CARI_PERSONEL_TANIMLARI';
+  static String get staticTableName => 'personnel_definitions';
 
   @override
   String get tableName => staticTableName;

@@ -1,44 +1,50 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
-class StockSalePriceListModel extends BaseModel {
-  final String? sequenceNo;
-  final String? description;
-  final bool? vatIncluded;
-  final String? startDate; // ISO8601 string
-  final String? endDate; // ISO8601 string
-  final String? appliedPrice;
-  final String? createdBy;
+class StockSalesPriceModel extends BaseModel {
+  final String? stockCode;
+  final int? listSequenceNo;
+  final int? warehouseSequenceNo;
+  final int? paymentPlan;
+  final int? unitPointer;
+  final double? price;
+  final int? currency;
+  final String? discountCode;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
-  StockSalePriceListModel({
+  StockSalesPriceModel({
     super.id, // 'id' field is inherited from BaseModel
-    this.sequenceNo,
-    this.description,
-    this.vatIncluded,
-    this.startDate,
-    this.endDate,
-    this.appliedPrice,
+    this.stockCode,
+    this.listSequenceNo,
+    this.warehouseSequenceNo,
+    this.paymentPlan,
+    this.unitPointer,
+    this.price,
+    this.currency,
+    this.discountCode,
     this.createdBy,
     this.createdAt,
     this.updatedBy,
     this.updatedAt,
   });
 
-  /// Creates a [StockSalePriceListModel] from a Map.
-  factory StockSalePriceListModel.fromMap(Map<String, dynamic> map) {
-    return StockSalePriceListModel(
+  /// Creates a [StockSalesPriceModel] from a Map.
+  factory StockSalesPriceModel.fromMap(Map<String, dynamic> map) {
+    return StockSalesPriceModel(
       id: map['id'] as String?,
-      sequenceNo: map['sequenceNo'] as String?,
-      description: map['description'] as String?,
-      vatIncluded: map['vatIncluded'] == 1, // SQLite stores booleans as 0 or 1
-      startDate: map['startDate'] as String?,
-      endDate: map['endDate'] as String?,
-      appliedPrice: map['appliedPrice'] as String?,
-      createdBy: map['createdBy'] as String?,
+      stockCode: map['stockCode'] as String?,
+      listSequenceNo: map['listSequenceNo'] as int?,
+      warehouseSequenceNo: map['warehouseSequenceNo'] as int?,
+      paymentPlan: map['paymentPlan'] as int?,
+      unitPointer: map['unitPointer'] as int?,
+      price: (map['price'] as num?)?.toDouble(), // Safely cast to double
+      currency: map['currency'] as int?,
+      discountCode: map['discountCode'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -47,12 +53,14 @@ class StockSalePriceListModel extends BaseModel {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'sequenceNo': sequenceNo,
-      'description': description,
-      'vatIncluded': vatIncluded == true ? 1 : 0, // Convert bool to int for SQLite
-      'startDate': startDate,
-      'endDate': endDate,
-      'appliedPrice': appliedPrice,
+      'stockCode': stockCode,
+      'listSequenceNo': listSequenceNo,
+      'warehouseSequenceNo': warehouseSequenceNo,
+      'paymentPlan': paymentPlan,
+      'unitPointer': unitPointer,
+      'price': price,
+      'currency': currency,
+      'discountCode': discountCode,
       'createdBy': createdBy,
       'createdAt': createdAt,
       'updatedBy': updatedBy,
@@ -60,13 +68,13 @@ class StockSalePriceListModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'STOK_SATIS_FIYAT_LISTE_TANIMLARI';
+  static String get staticTableName => 'stock_sales_prices';
 
   @override
   String get tableName => staticTableName;
 
   @override
-  StockSalePriceListModel fromMap(Map<String, dynamic> map) {
-    return StockSalePriceListModel.fromMap(map);
+  StockSalesPriceModel fromMap(Map<String, dynamic> map) {
+    return StockSalesPriceModel.fromMap(map);
   }
 }

@@ -1,53 +1,116 @@
-import 'package:core/core.dart';
-import 'package:sqflite_common/sqlite_api.dart';
+import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
-class ProjectsMigration extends Migration {
-  @override
-  int get version => 1; // Initial version for the Projects table migration
+class ProjectModel extends BaseModel {
+  final String? code;
+  final String? name;
+  final String? customerCode;
+  final String? ownerCode;
+  final String? documentCode;
+  final String? sectorCode;
+  final String? groupCode;
+  final int? status;
+  final String? description;
+  final String? mainProjectCode;
+  final int? plannedDuration;
+  final String? plannedStartDate; // ISO8601 string
+  final String? plannedEndDate; // ISO8601 string
+  final String? actualStartDate; // ISO8601 string
+  final String? actualEndDate; // ISO8601 string
+  final String? startDelayReason;
+  final String? endDelayReason;
+  final int? createdBy;
+  final String? createdAt; // ISO8601 string
+  final int? updatedBy;
+  final String? updatedAt; // ISO8601 string
 
-  @override
-  Future<void> up(Transaction txn) async {
-    // This method creates the 'PROJELER' table in the local Sqflite database.
-    // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
-    await txn.execute(
-      DatabaseHelper.createTableSql(
-        'PROJELER', // The table name in Sqflite.
-        {
-          // Column definitions using the preferred aliased names
-          'id': String, // Corresponds to pro_Guid AS id (GUIDs stored as String)
-          'code': String, // Corresponds to pro_kodu AS code
-          'name': String, // Corresponds to pro_adi AS name
-          'customerCode': String, // Corresponds to pro_musterikodu AS customerCode
-          'ownerCode': String, // Corresponds to pro_somerkodu AS ownerCode
-          'documentCode': String, // Corresponds to pro_belgekodu AS documentCode
-          'sectorCode': String, // Corresponds to pro_sektorkodu AS sectorCode
-          'groupCode': String, // Corresponds to pro_grupkodu AS groupCode
-          'status': int, // Corresponds to pro_durumu AS status
-          'description': String, // Corresponds to pro_aciklama AS description
-          'mainProjectCode': String, // Corresponds to pro_ana_projekodu AS mainProjectCode
-          'plannedDuration': int, // Corresponds to pro_planlanan_sure AS plannedDuration (assuming integer duration)
-          'plannedStartDate': String, // Corresponds to pro_planlanan_bastarih AS plannedStartDate
-          'plannedEndDate': String, // Corresponds to pro_planlanan_bittarih AS plannedEndDate
-          'actualStartDate': String, // Corresponds to pro_gerceklesen_bastarih AS actualStartDate
-          'actualEndDate': String, // Corresponds to pro_gerceklesen_bittarih AS actualEndDate
-          'startDelayReason': String, // Corresponds to pro_baslangic_gecikmesebep AS startDelayReason
-          'endDelayReason': String, // Corresponds to pro_bitis_gecikmesebep AS endDelayReason
-          'createdBy': int, // Corresponds to pro_create_user AS createdBy
-          'createdAt': String, // Corresponds to pro_create_date AS createdAt
-          'updatedBy': int, // Corresponds to pro_lastup_user AS updatedBy
-          'updatedAt': String, // Corresponds to pro_lastup_date AS updatedAt
-        },
-        'id', // 'id' column is now the PRIMARY KEY for this local table.
-        // autoIncrement is not needed here as 'id' will be a GUID string.
-      ),
+  ProjectModel({
+    super.id, // 'id' field is inherited from BaseModel
+    this.code,
+    this.name,
+    this.customerCode,
+    this.ownerCode,
+    this.documentCode,
+    this.sectorCode,
+    this.groupCode,
+    this.status,
+    this.description,
+    this.mainProjectCode,
+    this.plannedDuration,
+    this.plannedStartDate,
+    this.plannedEndDate,
+    this.actualStartDate,
+    this.actualEndDate,
+    this.startDelayReason,
+    this.endDelayReason,
+    this.createdBy,
+    this.createdAt,
+    this.updatedBy,
+    this.updatedAt,
+  });
+
+  /// Creates a [ProjectModel] from a Map.
+  factory ProjectModel.fromMap(Map<String, dynamic> map) {
+    return ProjectModel(
+      id: map['id'] as String?,
+      code: map['code'] as String?,
+      name: map['name'] as String?,
+      customerCode: map['customerCode'] as String?,
+      ownerCode: map['ownerCode'] as String?,
+      documentCode: map['documentCode'] as String?,
+      sectorCode: map['sectorCode'] as String?,
+      groupCode: map['groupCode'] as String?,
+      status: map['status'] as int?,
+      description: map['description'] as String?,
+      mainProjectCode: map['mainProjectCode'] as String?,
+      plannedDuration: map['plannedDuration'] as int?,
+      plannedStartDate: map['plannedStartDate'] as String?,
+      plannedEndDate: map['plannedEndDate'] as String?,
+      actualStartDate: map['actualStartDate'] as String?,
+      actualEndDate: map['actualEndDate'] as String?,
+      startDelayReason: map['startDelayReason'] as String?,
+      endDelayReason: map['endDelayReason'] as String?,
+      createdBy: map['createdBy'] as int?,
+      createdAt: map['createdAt'] as String?,
+      updatedBy: map['updatedBy'] as int?,
+      updatedAt: map['updatedAt'] as String?,
     );
-    AppLogger.info('ProjectsMigration: PROJELER table successfully created with aliased columns.');
   }
 
   @override
-  Future<void> down(Transaction txn) async {
-    // This method handles the dropping (deletion) of the 'PROJELER' table.
-    await txn.execute('DROP TABLE IF EXISTS PROJELER');
-    AppLogger.info('ProjectsMigration: PROJELER table dropped.');
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'code': code,
+      'name': name,
+      'customerCode': customerCode,
+      'ownerCode': ownerCode,
+      'documentCode': documentCode,
+      'sectorCode': sectorCode,
+      'groupCode': groupCode,
+      'status': status,
+      'description': description,
+      'mainProjectCode': mainProjectCode,
+      'plannedDuration': plannedDuration,
+      'plannedStartDate': plannedStartDate,
+      'plannedEndDate': plannedEndDate,
+      'actualStartDate': actualStartDate,
+      'actualEndDate': actualEndDate,
+      'startDelayReason': startDelayReason,
+      'endDelayReason': endDelayReason,
+      'createdBy': createdBy,
+      'createdAt': createdAt,
+      'updatedBy': updatedBy,
+      'updatedAt': updatedAt,
+    };
+  }
+
+  static String get staticTableName => 'projects';
+
+  @override
+  String get tableName => staticTableName;
+
+  @override
+  ProjectModel fromMap(Map<String, dynamic> map) {
+    return ProjectModel.fromMap(map);
   }
 }

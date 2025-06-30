@@ -64,7 +64,7 @@ class BarcodeModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'BARKOD_TANIMLARI';
+  static String get staticTableName => 'barcodes';
 
   @override
   String get tableName => staticTableName;

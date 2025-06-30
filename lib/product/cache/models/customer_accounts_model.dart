@@ -12,7 +12,7 @@ class CustomerAccountModel extends BaseModel {
   final String? taxOfficeCode;
   final String? naceCode1;
   final String? naceCode2;
-  final String? companyType;
+  final int? companyType;
   final int? createdBy;
   final String? createdAt; // ISO8601 string
   final int? updatedBy;
@@ -53,7 +53,7 @@ class CustomerAccountModel extends BaseModel {
       taxOfficeCode: map['taxOfficeCode'] as String?,
       naceCode1: map['naceCode1'] as String?,
       naceCode2: map['naceCode2'] as String?,
-      companyType: map['companyType'] as String?,
+      companyType: map['companyType'] as int?,
       createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
       updatedBy: map['updatedBy'] as int?,
@@ -84,7 +84,7 @@ class CustomerAccountModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'CARI_HESAPLAR';
+  static String get staticTableName => 'customer_accounts';
 
   @override
   String get tableName => staticTableName;

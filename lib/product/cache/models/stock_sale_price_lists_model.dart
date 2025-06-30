@@ -1,15 +1,15 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class StockSalePriceListModel extends BaseModel {
-  final String? sequenceNo;
+  final int? sequenceNo;
   final String? description;
   final bool? vatIncluded;
   final String? startDate; // ISO8601 string
   final String? endDate; // ISO8601 string
-  final String? appliedPrice;
-  final String? createdBy;
+  final int? appliedPrice;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   StockSalePriceListModel({
@@ -30,15 +30,15 @@ class StockSalePriceListModel extends BaseModel {
   factory StockSalePriceListModel.fromMap(Map<String, dynamic> map) {
     return StockSalePriceListModel(
       id: map['id'] as String?,
-      sequenceNo: map['sequenceNo'] as String?,
+      sequenceNo: map['sequenceNo'] as int?,
       description: map['description'] as String?,
       vatIncluded: map['vatIncluded'] == 1, // SQLite stores booleans as 0 or 1
       startDate: map['startDate'] as String?,
       endDate: map['endDate'] as String?,
-      appliedPrice: map['appliedPrice'] as String?,
-      createdBy: map['createdBy'] as String?,
+      appliedPrice: map['appliedPrice'] as int?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -60,7 +60,7 @@ class StockSalePriceListModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'STOK_SATIS_FIYAT_LISTE_TANIMLARI';
+  static String get staticTableName => 'stock_sale_price_lists';
 
   @override
   String get tableName => staticTableName;

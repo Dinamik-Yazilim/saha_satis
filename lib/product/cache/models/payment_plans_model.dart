@@ -1,13 +1,13 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class PaymentPlanModel extends BaseModel {
-  final String? no;
+  final int? no;
   final String? code;
   final String? name;
-  final double? subtotal;
-  final String? createdBy;
+  final String? subtotal;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   PaymentPlanModel({
@@ -26,13 +26,13 @@ class PaymentPlanModel extends BaseModel {
   factory PaymentPlanModel.fromMap(Map<String, dynamic> map) {
     return PaymentPlanModel(
       id: map['id'] as String?,
-      no: map['no'] as String?,
+      no: map['no'] as int?,
       code: map['code'] as String?,
       name: map['name'] as String?,
-      subtotal: (map['subtotal'] as num?)?.toDouble(),
-      createdBy: map['createdBy'] as String?,
+      subtotal: map['subtotal'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -52,7 +52,7 @@ class PaymentPlanModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'ODEME_PLANLARI';
+  static String get staticTableName => 'payment_plans';
 
   @override
   String get tableName => staticTableName;

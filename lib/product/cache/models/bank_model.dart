@@ -36,7 +36,7 @@ class BankModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'Banks';
+  static String get staticTableName => 'banks';
 
   @override
   String get tableName => staticTableName;

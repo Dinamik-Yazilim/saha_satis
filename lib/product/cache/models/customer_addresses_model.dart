@@ -22,13 +22,13 @@ class CustomerAddressModel extends BaseModel {
   final double? gpsLatitude;
   final double? gpsLongitude;
   final int? visitWeek;
-  final int? visitDay2_1;
-  final int? visitDay2_2;
-  final int? visitDay2_3;
-  final int? visitDay2_4;
-  final int? visitDay2_5;
-  final int? visitDay2_6;
-  final int? visitDay2_7;
+  final bool? visitDay2_1;
+  final bool? visitDay2_2;
+  final bool? visitDay2_3;
+  final bool? visitDay2_4;
+  final bool? visitDay2_5;
+  final bool? visitDay2_6;
+  final bool? visitDay2_7;
   final String? eInvoiceAlias;
   final int? createdBy;
   final String? createdAt; // ISO8601 string
@@ -97,13 +97,13 @@ class CustomerAddressModel extends BaseModel {
       gpsLatitude: (map['gpsLatitude'] as num?)?.toDouble(),
       gpsLongitude: (map['gpsLongitude'] as num?)?.toDouble(),
       visitWeek: map['visitWeek'] as int?,
-      visitDay2_1: map['visitDay2_1'] as int?,
-      visitDay2_2: map['visitDay2_2'] as int?,
-      visitDay2_3: map['visitDay2_3'] as int?,
-      visitDay2_4: map['visitDay2_4'] as int?,
-      visitDay2_5: map['visitDay2_5'] as int?,
-      visitDay2_6: map['visitDay2_6'] as int?,
-      visitDay2_7: map['visitDay2_7'] as int?,
+      visitDay2_1: map['visitDay2_1'] as bool?,
+      visitDay2_2: map['visitDay2_2'] as bool?,
+      visitDay2_3: map['visitDay2_3'] as bool?,
+      visitDay2_4: map['visitDay2_4'] as bool?,
+      visitDay2_5: map['visitDay2_5'] as bool?,
+      visitDay2_6: map['visitDay2_6'] as bool?,
+      visitDay2_7: map['visitDay2_7'] as bool?,
       eInvoiceAlias: map['eInvoiceAlias'] as String?,
       createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
@@ -152,7 +152,7 @@ class CustomerAddressModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'CARI_HESAP_ADRESLERI';
+  static String get staticTableName => 'customer_addresses';
 
   @override
   String get tableName => staticTableName;

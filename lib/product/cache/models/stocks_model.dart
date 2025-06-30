@@ -7,13 +7,13 @@ class StockModel extends BaseModel {
   final String? foreignName;
   final String? vendorCode;
   final String? unit1Name;
-  final int? unit1Multiplier;
+  final double? unit1Multiplier;
   final String? unit2Name;
-  final int? unit2Multiplier;
+  final double? unit2Multiplier;
   final String? unit3Name;
-  final int? unit3Multiplier;
+  final double? unit3Multiplier;
   final String? unit4Name;
-  final int? unit4Multiplier;
+  final double? unit4Multiplier;
   final int? retailTax;
   final int? wholesaleTax;
   final bool? salesBlocked; // Stored as INTEGER (0 or 1) in SQLite
@@ -28,9 +28,9 @@ class StockModel extends BaseModel {
   final String? origin;
   final String? mainGroupCode;
   final bool? detailTracking; // Stored as INTEGER (0 or 1) in SQLite
-  final String? createdBy;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   StockModel({
@@ -78,13 +78,13 @@ class StockModel extends BaseModel {
       foreignName: map['foreignName'] as String?,
       vendorCode: map['vendorCode'] as String?,
       unit1Name: map['unit1Name'] as String?,
-      unit1Multiplier: map['unit1Multiplier'] as int?,
+      unit1Multiplier: (map['unit1Multiplier'] as num?)?.toDouble(),
       unit2Name: map['unit2Name'] as String?,
-      unit2Multiplier: map['unit2Multiplier'] as int?,
+      unit2Multiplier: (map['unit2Multiplier'] as num?)?.toDouble(),
       unit3Name: map['unit3Name'] as String?,
-      unit3Multiplier: map['unit3Multiplier'] as int?,
+      unit3Multiplier: (map['unit3Multiplier'] as num?)?.toDouble(),
       unit4Name: map['unit4Name'] as String?,
-      unit4Multiplier: map['unit4Multiplier'] as int?,
+      unit4Multiplier: (map['unit4Multiplier'] as num?)?.toDouble(),
       retailTax: map['retailTax'] as int?,
       wholesaleTax: map['wholesaleTax'] as int?,
       salesBlocked: map['salesBlocked'] == 1, // SQLite stores booleans as 0 or 1
@@ -99,9 +99,9 @@ class StockModel extends BaseModel {
       origin: map['origin'] as String?,
       mainGroupCode: map['mainGroupCode'] as String?,
       detailTracking: map['detailTracking'] == 1, // SQLite stores booleans as 0 or 1
-      createdBy: map['createdBy'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -144,7 +144,7 @@ class StockModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'STOKLAR';
+  static String get staticTableName => 'stocks';
 
   @override
   String get tableName => staticTableName;

@@ -3,10 +3,10 @@ import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 class CashboxModel extends BaseModel {
   final String? code;
   final String? name;
-  final String? type;
-  final String? createdBy;
+  final int? type;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   CashboxModel({
@@ -26,10 +26,10 @@ class CashboxModel extends BaseModel {
       id: map['id'] as String?,
       code: map['code'] as String?,
       name: map['name'] as String?,
-      type: map['type'] as String?,
-      createdBy: map['createdBy'] as String?,
+      type: map['type'] as int?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -48,7 +48,7 @@ class CashboxModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'KASALAR';
+  static String get staticTableName => 'cash_boxes';
 
   @override
   String get tableName => staticTableName;

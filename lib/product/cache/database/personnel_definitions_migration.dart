@@ -19,17 +19,17 @@ class PersonnelDefinitionsMigration extends Migration {
           'personnelCode': String, // Corresponds to cari_per_kod AS personnelCode
           'firstName': String, // Corresponds to cari_per_adi AS firstName
           'lastName': String, // Corresponds to cari_per_soyadi AS lastName
-          'type': String, // Corresponds to cari_per_tip AS type
-          'currencyType': String, // Corresponds to cari_per_doviz_cinsi AS currencyType
-          'userNo': String, // Corresponds to cari_per_userno AS userNo
-          'warehouseNo': String, // Corresponds to cari_per_depono AS warehouseNo
+          'type': int, // Corresponds to cari_per_tip AS type
+          'currencyType': int, // Corresponds to cari_per_doviz_cinsi AS currencyType
+          'userNo': int, // Corresponds to cari_per_userno AS userNo
+          'warehouseNo': int, // Corresponds to cari_per_depono AS warehouseNo
           'mobilePhone': String, // Corresponds to cari_per_cepno AS mobilePhone
           'email': String, // Corresponds to cari_per_mail AS email
           'calendarCode': String, // Corresponds to cari_takvim_kodu AS calendarCode
           'identityNo': String, // Corresponds to cari_per_TcKimlikNo AS identityNo
-          'createdBy': String, // Corresponds to cari_per_create_user AS createdBy
+          'createdBy': int, // Corresponds to cari_per_create_user AS createdBy
           'createdAt': String, // Corresponds to cari_per_create_date AS createdAt
-          'updatedBy': String, // Corresponds to cari_per_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to cari_per_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to cari_per_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

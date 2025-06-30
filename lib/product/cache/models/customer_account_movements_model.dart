@@ -1,19 +1,19 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class CustomerAccountMovementModel extends BaseModel {
-  final String? companyNo;
-  final String? branchNo;
-  final String? documentType;
+  final int? companyNo;
+  final int? branchNo;
+  final int? documentType;
   final String? documentSerialNo;
-  final String? documentSequenceNo;
+  final int? documentSequenceNo;
   final int? documentLineNo;
-  final String? type;
-  final String? kind;
+  final int? type;
+  final int? kind;
   final String? documentNo;
   final String? documentDate; // ISO8601 string
   final String? description;
   final String? vendorCode;
-  final String? accountKind;
+  final int? accountKind;
   final String? code;
   final String? turnoverAccountCode;
   final double? exchangeRate;
@@ -22,7 +22,7 @@ class CustomerAccountMovementModel extends BaseModel {
   final double? quantity;
   final double? amount;
   final double? subtotal;
-  final String? dueDate; // ISO8601 string
+  final int? dueDate; // ISO8601 string
   final double? invoiceDiscount1;
   final double? invoiceDiscount2;
   final double? invoiceDiscount3;
@@ -53,9 +53,9 @@ class CustomerAccountMovementModel extends BaseModel {
   final double? tax18;
   final double? tax19;
   final double? tax20;
-  final String? createdBy;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   CustomerAccountMovementModel({
@@ -122,19 +122,19 @@ class CustomerAccountMovementModel extends BaseModel {
   factory CustomerAccountMovementModel.fromMap(Map<String, dynamic> map) {
     return CustomerAccountMovementModel(
       id: map['id'] as String?,
-      companyNo: map['companyNo'] as String?,
-      branchNo: map['branchNo'] as String?,
-      documentType: map['documentType'] as String?,
+      companyNo: map['companyNo'] as int?,
+      branchNo: map['branchNo'] as int?,
+      documentType: map['documentType'] as int?,
       documentSerialNo: map['documentSerialNo'] as String?,
-      documentSequenceNo: map['documentSequenceNo'] as String?,
+      documentSequenceNo: map['documentSequenceNo'] as int?,
       documentLineNo: map['documentLineNo'] as int?,
-      type: map['type'] as String?,
-      kind: map['kind'] as String?,
+      type: map['type'] as int?,
+      kind: map['kind'] as int?,
       documentNo: map['documentNo'] as String?,
       documentDate: map['documentDate'] as String?,
       description: map['description'] as String?,
       vendorCode: map['vendorCode'] as String?,
-      accountKind: map['accountKind'] as String?,
+      accountKind: map['accountKind'] as int?,
       code: map['code'] as String?,
       turnoverAccountCode: map['turnoverAccountCode'] as String?,
       exchangeRate: (map['exchangeRate'] as num?)?.toDouble(),
@@ -143,7 +143,7 @@ class CustomerAccountMovementModel extends BaseModel {
       quantity: (map['quantity'] as num?)?.toDouble(),
       amount: (map['amount'] as num?)?.toDouble(),
       subtotal: (map['subtotal'] as num?)?.toDouble(),
-      dueDate: map['dueDate'] as String?,
+      dueDate: map['dueDate'] as int?,
       invoiceDiscount1: (map['invoiceDiscount1'] as num?)?.toDouble(),
       invoiceDiscount2: (map['invoiceDiscount2'] as num?)?.toDouble(),
       invoiceDiscount3: (map['invoiceDiscount3'] as num?)?.toDouble(),
@@ -174,9 +174,9 @@ class CustomerAccountMovementModel extends BaseModel {
       tax18: (map['tax18'] as num?)?.toDouble(),
       tax19: (map['tax19'] as num?)?.toDouble(),
       tax20: (map['tax20'] as num?)?.toDouble(),
-      createdBy: map['createdBy'] as String?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -244,7 +244,7 @@ class CustomerAccountMovementModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'CARI_HESAP_HAREKETLERI';
+  static String get staticTableName => 'customer_account_movements';
 
   @override
   String get tableName => staticTableName;

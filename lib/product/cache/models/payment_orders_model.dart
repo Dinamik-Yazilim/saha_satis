@@ -1,29 +1,29 @@
 import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class PaymentOrderModel extends BaseModel {
-  final String? companyNo;
-  final String? branchNo;
-  final String? type;
+  final int? companyNo;
+  final int? branchNo;
+  final int? type;
   final String? referenceNo;
   final String? bankNo;
   final String? debtor;
   final String? dueDate; // ISO8601 string
   final double? amount;
-  final String? currency;
+  final int? currency;
   final double? paidAmount;
-  final String? ownerAccountKind;
+  final int? ownerAccountKind;
   final String? ownerAccountCode;
-  final String? ownerAccountGroupNo;
-  final String? locationAccountKind;
+  final int? ownerAccountGroupNo;
+  final int? locationAccountKind;
   final String? locationAccountCode;
-  final String? locationAccountGroupNo;
+  final int? locationAccountGroupNo;
   final String? firstDocumentSerial;
-  final String? firstDocumentSequenceNo;
+  final int? firstDocumentSequenceNo;
   final int? firstDocumentLineNo;
-  final String? lastPosition;
-  final String? createdBy;
+  final int? lastPosition;
+  final int? createdBy;
   final String? createdAt; // ISO8601 string
-  final String? updatedBy;
+  final int? updatedBy;
   final String? updatedAt; // ISO8601 string
 
   PaymentOrderModel({
@@ -58,29 +58,29 @@ class PaymentOrderModel extends BaseModel {
   factory PaymentOrderModel.fromMap(Map<String, dynamic> map) {
     return PaymentOrderModel(
       id: map['id'] as String?,
-      companyNo: map['companyNo'] as String?,
-      branchNo: map['branchNo'] as String?,
-      type: map['type'] as String?,
+      companyNo: map['companyNo'] as int?,
+      branchNo: map['branchNo'] as int?,
+      type: map['type'] as int?,
       referenceNo: map['referenceNo'] as String?,
       bankNo: map['bankNo'] as String?,
       debtor: map['debtor'] as String?,
       dueDate: map['dueDate'] as String?,
       amount: (map['amount'] as num?)?.toDouble(),
-      currency: map['currency'] as String?,
+      currency: map['currency'] as int?,
       paidAmount: (map['paidAmount'] as num?)?.toDouble(),
-      ownerAccountKind: map['ownerAccountKind'] as String?,
+      ownerAccountKind: map['ownerAccountKind'] as int?,
       ownerAccountCode: map['ownerAccountCode'] as String?,
-      ownerAccountGroupNo: map['ownerAccountGroupNo'] as String?,
-      locationAccountKind: map['locationAccountKind'] as String?,
+      ownerAccountGroupNo: map['ownerAccountGroupNo'] as int?,
+      locationAccountKind: map['locationAccountKind'] as int?,
       locationAccountCode: map['locationAccountCode'] as String?,
-      locationAccountGroupNo: map['locationAccountGroupNo'] as String?,
+      locationAccountGroupNo: map['locationAccountGroupNo'] as int?,
       firstDocumentSerial: map['firstDocumentSerial'] as String?,
-      firstDocumentSequenceNo: map['firstDocumentSequenceNo'] as String?,
+      firstDocumentSequenceNo: map['firstDocumentSequenceNo'] as int?,
       firstDocumentLineNo: map['firstDocumentLineNo'] as int?,
-      lastPosition: map['lastPosition'] as String?,
-      createdBy: map['createdBy'] as String?,
+      lastPosition: map['lastPosition'] as int?,
+      createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
-      updatedBy: map['updatedBy'] as String?,
+      updatedBy: map['updatedBy'] as int?,
       updatedAt: map['updatedAt'] as String?,
     );
   }
@@ -116,7 +116,7 @@ class PaymentOrderModel extends BaseModel {
     };
   }
 
-  static String get staticTableName => 'ODEME_EMIRLERI';
+  static String get staticTableName => 'payment_orders';
 
   @override
   String get tableName => staticTableName;

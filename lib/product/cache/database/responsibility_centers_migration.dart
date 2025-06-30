@@ -11,17 +11,17 @@ class ResponsibilityCentersMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'responsibility_centers', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to som_Guid AS id (GUIDs stored as String)
           'code': String, // Corresponds to som_kod AS code
           'name': String, // Corresponds to som_isim AS name
-          'type': String, // Corresponds to som_tipi AS type
-          'createdBy': String, // Corresponds to som_create_user AS createdBy
+          'type': int, // Corresponds to som_tipi AS type
+          'createdBy': int, // Corresponds to som_create_user AS createdBy
           'createdAt': String, // Corresponds to som_create_date AS createdAt
-          'updatedBy': String, // Corresponds to som_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to som_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to som_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.

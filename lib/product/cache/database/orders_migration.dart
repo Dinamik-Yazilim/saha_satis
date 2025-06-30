@@ -11,20 +11,20 @@ class OrdersMigration extends Migration {
     // Column names are aligned with the aliases used in your SQL SELECT query for consistency.
     await txn.execute(
       DatabaseHelper.createTableSql(
-         autoIncrement: false,
+        autoIncrement: false,
         'orders', // The table name in Sqflite.
         {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to sip_Guid AS id (GUIDs stored as String)
-          'kind': String, // Corresponds to sip_cins AS kind
-          'type': String, // Corresponds to sip_tip AS type
+          'kind': int, // Corresponds to sip_cins AS kind
+          'type': int, // Corresponds to sip_tip AS type
           'documentSerialNo': String, // Corresponds to sip_evrakno_seri AS documentSerialNo
-          'documentSequenceNo': String, // Corresponds to sip_evrakno_sira AS documentSequenceNo
+          'documentSequenceNo': int, // Corresponds to sip_evrakno_sira AS documentSequenceNo
           'documentLineNo': int, // Corresponds to sip_satirno AS documentLineNo
           'vendorCode': String, // Corresponds to sip_satici_kod AS vendorCode
           'unitPrice': double, // Corresponds to sip_b_fiyat AS unitPrice
           'quantity': double, // Corresponds to sip_miktar AS quantity
-          'unitPointer': String, // Corresponds to sip_birim_pntr AS unitPointer
+          'unitPointer': int, // Corresponds to sip_birim_pntr AS unitPointer
           'deliveredQuantity': double, // Corresponds to sip_teslim_miktar AS deliveredQuantity
           'amount': double, // Corresponds to sip_tutar AS amount
           'discount1': double, // Corresponds to sip_iskonto1 AS discount1
@@ -37,16 +37,16 @@ class OrdersMigration extends Migration {
           'expense2': double, // Corresponds to sip_masraf2 AS expense2
           'expense3': double, // Corresponds to sip_masraf3 AS expense3
           'expense4': double, // Corresponds to sip_masraf4 AS expense4
-          'taxPointer': String, // Corresponds to sip_vergi_pntr AS taxPointer
+          'taxPointer': int, // Corresponds to sip_vergi_pntr AS taxPointer
           'taxAmount': double, // Corresponds to sip_vergi AS taxAmount
           'description': String, // Corresponds to sip_aciklama AS description
           'description2': String, // Corresponds to sip_aciklama2 AS description2
-          'warehouseNo': String, // Corresponds to sip_depono AS warehouseNo
+          'warehouseNo': int, // Corresponds to sip_depono AS warehouseNo
           'currencyRate': double, // Corresponds to sip_doviz_kuru AS currencyRate
           'exchangeRate': double, // Corresponds to sip_alt_doviz_kuru AS exchangeRate
-          'createdBy': String, // Corresponds to sip_create_user AS createdBy
+          'createdBy': int, // Corresponds to sip_create_user AS createdBy
           'createdAt': String, // Corresponds to sip_create_date AS createdAt
-          'updatedBy': String, // Corresponds to sip_lastup_user AS updatedBy
+          'updatedBy': int, // Corresponds to sip_lastup_user AS updatedBy
           'updatedAt': String, // Corresponds to sip_lastup_date AS updatedAt
         },
         'id', // 'id' column is now the PRIMARY KEY for this local table.
