@@ -44,6 +44,7 @@ class AppSettingMigration extends Migration {
       'authTokenType': null,
       'expiresIn': null,
       'isGuestUser': 0,
+      'appLayout': 'grid',
     }, conflictAlgorithm: ConflictAlgorithm.replace);
     AppLogger.info('AppSettingMigration: app_settingsThe default record was added to the table.');
   }

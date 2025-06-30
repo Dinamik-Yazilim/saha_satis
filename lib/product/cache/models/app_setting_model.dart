@@ -65,7 +65,7 @@ class AppSettingModel extends BaseModel {
       'authTokenType': authTokenType,
       'expiresIn': expiresIn,
       'isGuestUser': isGuestUser! ? 1 : 0,
-      'appLayout': appLayout ?? 'grid ',
+      'appLayout': appLayout ?? 'grid',
     };
   }
 
