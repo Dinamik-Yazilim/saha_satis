@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:core/core.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_logger/easy_logger.dart';
@@ -21,6 +22,7 @@ final class ApplicationInitialize {
   }
 
   static Future<void> _initialize() async {
+    AppLogger.disableAll();
     await EasyLocalization.ensureInitialized();
     EasyLocalization.logger.enableLevels = [LevelMessages.error];
     await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -28,6 +30,7 @@ final class ApplicationInitialize {
     FlutterError.onError = (details) {
       Logger().e(details.exceptionAsString());
     };
+
     AppEnvironment.general();
     ProductContainer.setup();
     await DatabaseInitializer().initializeDatabase();
