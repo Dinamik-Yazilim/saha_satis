@@ -1,7 +1,6 @@
 part of '../layout_view.dart';
 
 class _LayoutAppBarWidget extends StatelessWidget implements PreferredSizeWidget {
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LayoutViewModel, LayoutState>(
@@ -23,6 +22,8 @@ class _LayoutAppBarWidget extends StatelessWidget implements PreferredSizeWidget
                   )
                   : const SizedBox.shrink(),
           isExit: shouldShowExitIcon,
+          isSetting: true,
+          isSynchronization: true,
         );
       },
     );
