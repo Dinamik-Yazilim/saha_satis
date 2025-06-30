@@ -10,7 +10,11 @@ final class ProductNetworkErrorManager {
 
   void handleError(int value) {
     if (value == HttpStatus.unauthorized) {
-      customShowDialogGeneric(context, alertEnum: AlertEnum.error, subTitle: 'Bir hata olustu, lutfen tekrar deneyin');
+      customShowDialogGeneric(
+        context,
+        alertEnum: AlertEnum.error,
+        subTitle: 'Yetkisiz islem, lütfen tekrar giris yapiniz veya yetkili ile iletisime geciniz',
+      );
     }
     if (value == HttpStatus.notFound) {
       customShowDialogGeneric(
