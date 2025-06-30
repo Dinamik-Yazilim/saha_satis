@@ -22,9 +22,9 @@ class LoginViewModel extends BaseCubit<LoginState> {
     emit(state.copyWith(isLoading: true, errorMessage: null));
 
     try {
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 1));
 
-      if (email == "demo@demo.com" && password == "demo") {
+      if (email == "d@d.com" && password == "d") {
         emit(state.copyWith(isLoading: false, isSuccess: true));
       } else {
         emit(state.copyWith(isLoading: false, errorMessage: "Geçersiz kullanıcı bilgisi"));

@@ -121,7 +121,7 @@ class _SettingViewState extends BaseState<SettingView> with SettingMixin {
                 title: Text(LocaleKeys.settings_app_exit, style: context.general.textTheme.titleMedium).tr(),
                 onTap: () {
                   productViewModel.changeToken('');
-                  context.router.replaceAll([LoginRoute()]);
+                  context.router.replace(const SplashRoute());
                 },
               ),
             ],
