@@ -3,7 +3,6 @@ import 'package:envied/envied.dart';
 
 import 'app_configuration.dart';
 
-
 part 'prod_dev.g.dart';
 
 @Envied(obfuscate: true, path: 'assets/env/.prod.env')
@@ -19,4 +18,3 @@ final class ProdEnv implements AppConfiguration {
   @override
   String get apiKey => _apiKey;
 }
- 
