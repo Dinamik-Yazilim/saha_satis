@@ -31,6 +31,7 @@ SELECT
     bar_lastup_date AS updatedAt
 FROM
     BARKOD_TANIMLARI
+WITH (NOLOCK)
 WHERE
     bar_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -52,6 +53,7 @@ SELECT
     ban_lastup_date AS updatedAt
 FROM
     Bankalar
+WITH (NOLOCK)
 WHERE
     ban_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -100,6 +102,7 @@ SELECT
     adr_lastup_date AS updatedAt
 FROM
     CARI_HESAP_ADRESLERI
+WITH (NOLOCK)
 WHERE
     adr_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -131,6 +134,7 @@ SELECT
     cari_lastup_date AS updatedAt
 FROM
     CARI_HESAPLAR
+WITH (NOLOCK)
 WHERE
     cari_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -153,6 +157,7 @@ SELECT
     dep_lastup_date AS updatedAt
 FROM
     DEPOLAR
+WITH (NOLOCK)
 WHERE
     dep_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -175,6 +180,7 @@ SELECT
     kas_lastup_date AS updatedAt
 FROM
     KASALAR
+WITH (NOLOCK)
 WHERE
     kas_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -198,6 +204,7 @@ SELECT
     odp_lastup_date AS updatedAt
 FROM
     ODEME_PLANLARI
+WITH (NOLOCK)
 WHERE
     odp_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -234,6 +241,7 @@ SELECT
     pro_lastup_date AS updatedAt
 FROM
     PROJELER
+WITH (NOLOCK)
 WHERE
     pro_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -259,6 +267,7 @@ SELECT
     sfl_lastup_date AS updatedAt
 FROM
     STOK_SATIS_FIYAT_LISTE_TANIMLARI
+WITH (NOLOCK)
 WHERE
     sfl_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -286,6 +295,7 @@ SELECT
     sfiyat_lastup_date AS updatedAt
 FROM
     STOK_SATIS_FIYAT_LISTELERI
+WITH (NOLOCK)
 WHERE
     sfiyat_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -308,6 +318,7 @@ SELECT
     som_lastup_date AS updatedAt
 FROM
     SORUMLULUK_MERKEZLERI
+WITH (NOLOCK)
 WHERE
     som_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -354,6 +365,7 @@ SELECT
     sto_lastup_date AS updatedAt
 FROM
     STOKLAR
+WITH (NOLOCK)
 WHERE
     sto_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -425,6 +437,7 @@ SELECT
     cha_lastup_date AS updatedAt
 FROM
     CARI_HESAP_HAREKETLERI
+WITH (NOLOCK)
 WHERE
     cha_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -482,6 +495,7 @@ SELECT
     sth_lastup_date AS updatedAt
 FROM
     STOK_HAREKETLERI
+WITH (NOLOCK)
 WHERE
     sth_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -529,6 +543,7 @@ SELECT
     sip_lastup_date AS updatedAt
 FROM
     SIPARISLER
+WITH (NOLOCK)
 WHERE
     sip_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -568,6 +583,7 @@ SELECT
     sck_lastup_date AS updatedAt
 FROM
     ODEME_EMIRLERI
+WITH (NOLOCK)
 WHERE
     sck_lastup_date > '{lastUpDate}'
 ORDER BY
@@ -598,6 +614,7 @@ SELECT
     cari_per_lastup_date AS updatedAt
 FROM
     CARI_PERSONEL_TANIMLARI
+WITH (NOLOCK)
 WHERE
     cari_per_lastup_date > '{lastUpDate}'
 ORDER BY
