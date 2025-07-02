@@ -50,8 +50,24 @@
         "dialog": {
             "version": {
                 "title": "Version",
-                "content": "Version info"
-            }
+                "content": "Version information"
+            },
+            "yes": "Yes",
+            "no": "No"
         }
+    },
+    "layout": {
+        "noPermission": "You do not have permission to access this menu.",
+        "favoriteDialog": {
+            "title": "Manage {} Menu in Favorites",
+            "addContent": "Do you want to add this menu to your favorites?",
+            "removeContent": "Do you want to remove this menu from your favorites?",
+            "addedMessage": "{} added to your favorites.",
+            "removedMessage": "{} removed from your favorites."
+        },
+        "mainMenu": "Main Menu",
+        "favorites": "Favorites",
+        "noFavorites": "You do not have any favorite menu items yet.\n\n Add some to access them quickly.\n\n Slide it down again to get out of the favorite.",
+        "favorite_noRoute": "Favorite sub-menu items should have a direct route."
     }
 }

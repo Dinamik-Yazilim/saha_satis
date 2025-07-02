@@ -51,7 +51,23 @@
             "version": {
                 "title": "Versiyon",
                 "content": "Versiyon bilgisi"
-            }
+            },
+            "yes": "Evet",
+            "no": "Hayır"
         }
+    },
+    "layout": {
+        "noPermission": "Bu menüye erişim yetkiniz bulunmamaktadır.",
+        "favoriteDialog": {
+            "title": "{} Menüsünü",
+            "addContent": "Bu menüyü favorilerinize eklemek istiyor musunuz?",
+            "removeContent": "Bu menüyü favorilerinizden kaldırmak istiyor musunuz?",
+            "addedMessage": "{} favorilerinize eklendi.",
+            "removedMessage": "{} favorilerinizden kaldırıldı."
+        },
+        "mainMenu": "Ana Menü",
+        "favorites": "Favoriler",
+        "noFavorites": "Henüz favori menü öğeniz bulunmamaktadır.\n\nFavoriye menü öğesi eklemek için menü öğesine uzun basın.\n\nFavoriden çikmak için tekrar aşağı kaydırın.",
+        "favorite_noRoute": "Favori alt menü öğelerinin doğrudan rotası olmalıdır."
     }
 }
