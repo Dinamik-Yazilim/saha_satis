@@ -1,3 +1,4 @@
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:dinamik10_pos/feature/layout/view/mixin/layout_view_mixin.dart';
 import 'package:dinamik10_pos/product/common/widget/custom_appbar.dart';
 import 'package:dinamik10_pos/product/init/language/locale_keys.g.dart';
@@ -42,39 +43,71 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
             } else if (layoutState.errorMessage != null) {
               return Center(child: Text('Error: ${layoutState.errorMessage}'));
             }
-            final visibleMenuItems =
-                layoutState.currentMenuItems.where((item) {
-                  return canAccess(item);
-                }).toList();
+
+            List<MenuItem> displayedMenuItems;
+            if (layoutState.showFavoritesOnly) {
+              displayedMenuItems =
+                  layoutState.favoriteMenuItems.where((item) {
+                    return canAccess(item);
+                  }).toList();
+              if (displayedMenuItems.isEmpty) {
+                return _emptyFavoriteWidget(context);
+              }
+            } else {
+              displayedMenuItems =
+                  layoutState.currentMenuItems.where((item) {
+                    return canAccess(item);
+                  }).toList();
+            }
 
             /// [AppLayouts.grid]
             if (currentAppLayout == AppLayouts.grid) {
-              return AdaptMobileView(
-                phone: _layoutBodyGrid(
-                  visibleMenuItems,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  childAspectRatio: 1.2,
-                ),
-                tablet: _layoutBodyGrid(
-                  visibleMenuItems,
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 16,
-                  mainAxisSpacing: 16,
-                  childAspectRatio: 1.2,
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context.read<LayoutViewModel>().toggleShowFavoritesOnly();
+                },
+                elevation: 20,
+                strokeWidth: 2,
+                child: AdaptMobileView(
+                  phone: _layoutBodyGrid(
+                    displayedMenuItems,
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 8,
+                    mainAxisSpacing: 8,
+                    childAspectRatio: 1.2,
+                  ),
+                  tablet: _layoutBodyGrid(
+                    displayedMenuItems,
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                    childAspectRatio: 1.2,
+                  ),
                 ),
               );
 
               /// [AppLayouts.list]
             } else if (currentAppLayout == AppLayouts.list) {
-              return ListView.builder(
-                padding: ProjectPadding.allNormal(),
-                itemCount: visibleMenuItems.length,
-                itemBuilder: (context, index) {
-                  final item = visibleMenuItems[index];
-                  return _LayoutListWidget(menuItem: item, onTapCallback: onMenuItemTap);
+              return RefreshIndicator(
+                onRefresh: () async {
+                  context.read<LayoutViewModel>().toggleShowFavoritesOnly();
                 },
+                elevation: 20,
+                strokeWidth: 2,
+                child: ListView.builder(
+                  padding: ProjectPadding.allNormal(),
+                  itemCount: displayedMenuItems.length,
+                  itemBuilder: (context, index) {
+                    final item = displayedMenuItems[index];
+                    return _LayoutListWidget(
+                      menuItem: item,
+                      onTapCallback: onMenuItemTap,
+                      onLongPressCallback: (item) {
+                        onMenuItemLongPress(item, context.read<LayoutViewModel>());
+                      },
+                    );
+                  },
+                ),
               );
             }
             return const SizedBox.shrink();
@@ -84,8 +117,33 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
     );
   }
 
+  RefreshIndicator _emptyFavoriteWidget(BuildContext context) {
+    return RefreshIndicator(
+      onRefresh: () async {
+        context.read<LayoutViewModel>().toggleShowFavoritesOnly();
+      },
+      elevation: 20,
+      strokeWidth: 2,
+      child: ListView(
+        children: [
+          Padding(
+            padding: ProjectPadding.allLarge(),
+            child: Text(
+              LocaleKeys.layout_noFavorites.tr(),
+              style: context.general.textTheme.headlineMedium?.copyWith(
+                color: context.general.colorScheme.onSurface.withValues(alpha: 0.6),
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   GridView _layoutBodyGrid(
-    List<MenuItem> visibleMenuItems, {
+    List<MenuItem> displayedMenuItems, {
     required int crossAxisCount,
     required double crossAxisSpacing,
     required double mainAxisSpacing,
@@ -99,13 +157,16 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
         mainAxisSpacing: mainAxisSpacing,
         childAspectRatio: childAspectRatio,
       ),
-      itemCount: visibleMenuItems.length,
+      itemCount: displayedMenuItems.length,
       itemBuilder: (context, index) {
-        final item = visibleMenuItems[index];
+        final item = displayedMenuItems[index];
         return _LayoutGridWidget(
           menuItem: item,
           cardBaseColor: getCardBaseColor(index),
           contentColor: getContentColor(),
+          onLongPressCallback: (item) {
+            onMenuItemLongPress(item, context.read<LayoutViewModel>());
+          },
           onTap: () {
             if (canAccess(item)) {
               if (item.hasRoute) {

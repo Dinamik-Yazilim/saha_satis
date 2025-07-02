@@ -2,9 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:dinamik10_pos/feature/layout/view/layout_view.dart';
 import 'package:dinamik10_pos/feature/layout/view_model/layout_view_model.dart';
 import 'package:dinamik10_pos/product/state/base/base_state.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:widgets/widgets.dart';
 
+import '../../../../product/init/language/locale_keys.g.dart';
 import '../../../../product/state/layout_menu/model/menu_item.dart';
 
 mixin LayoutViewMixin on BaseState<LayoutView> {
@@ -67,6 +70,32 @@ mixin LayoutViewMixin on BaseState<LayoutView> {
         context,
       ).showSnackBar(const SnackBar(content: Text('Bu menüye erişim yetkiniz bulunmamaktadır.')));
     }
+  }
+
+  void onMenuItemLongPress(MenuItem item, LayoutViewModel layoutViewModel) {
+    final isCurrentlyFavorite = layoutViewModel.isMenuItemFavorite(item);
+    customShowDialogGeneric(
+      context,
+      alertEnum: AlertEnum.info,
+      subTitle:
+          isCurrentlyFavorite
+              ? LocaleKeys.layout_favoriteDialog_removeContent.tr()
+              : LocaleKeys.layout_favoriteDialog_addContent.tr(),
+      okButtonTitle: LocaleKeys.general_dialog_yes.tr(),
+      okButtonFunction: () async {
+        layoutViewModel.toggleFavorite(item);
+        customShowDialogGeneric(
+          context,
+          alertEnum: AlertEnum.success,
+          subTitle:
+              layoutViewModel.isMenuItemFavorite(item)
+                  ? LocaleKeys.layout_favoriteDialog_addedMessage.tr(args: [item.title.tr()])
+                  : LocaleKeys.layout_favoriteDialog_removedMessage.tr(args: [item.title.tr()]),
+          offTime: 1000,
+        );
+      },
+      cancelButtonTitle: LocaleKeys.general_dialog_no.tr(),
+    );
   }
 
   @override

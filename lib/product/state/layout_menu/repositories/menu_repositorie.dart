@@ -14,13 +14,23 @@ class MenuRepository {
       children: [
         MenuItem(
           id: 'alis_faturasi',
+          microId: '062205',
           title: LocaleKeys.menu_purchase_invoice,
           icon: Icons.description,
           route: const HomeRoute(),
           requiredPermissions: ['can_view_purchase_invoice'],
         ),
         MenuItem(
-          id: 'alis_irsaliyesi',
+          id: 'parakende_alis_irsaliyesi',
+          microId: '012220',
+          title: LocaleKeys.menu_sales_delivery_note,
+          icon: Icons.delivery_dining,
+          route: const SettingRoute(),
+          requiredPermissions: ['can_view_purchase_delivery_note'],
+        ),
+        MenuItem(
+          id: 'toptan_alis_irsaliyesi',
+          microId: '012210',
           title: LocaleKeys.menu_sales_delivery_note,
           icon: Icons.delivery_dining,
           route: const SettingRoute(),
@@ -28,6 +38,7 @@ class MenuRepository {
         ),
         MenuItem(
           id: 'alis_iadesi',
+          microId: null,
           title: LocaleKeys.menu_purchase_return,
           icon: Icons.assignment_return,
           route: const SettingRoute(),
@@ -43,6 +54,7 @@ class MenuRepository {
       children: [
         MenuItem(
           id: 'satis_faturasi',
+          microId: '',
           title: LocaleKeys.menu_sales_invoice,
           icon: Icons.receipt_long,
           route: const SettingRoute(),
@@ -50,6 +62,7 @@ class MenuRepository {
         ),
         MenuItem(
           id: 'satis_irsaliyesi',
+          microId: '',
           title: LocaleKeys.menu_sales_delivery_note,
           icon: Icons.local_shipping,
           route: const SettingRoute(),

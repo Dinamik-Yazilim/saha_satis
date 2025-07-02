@@ -3,8 +3,9 @@ part of '../layout_view.dart';
 class _LayoutListWidget extends StatelessWidget {
   final MenuItem menuItem;
   final ValueChanged<MenuItem> onTapCallback;
+  final Function(MenuItem) onLongPressCallback;
 
-  const _LayoutListWidget({required this.menuItem, required this.onTapCallback});
+  const _LayoutListWidget({required this.menuItem, required this.onTapCallback, required this.onLongPressCallback});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +41,7 @@ class _LayoutListWidget extends StatelessWidget {
           leading: Icon(menuItem.icon, color: context.general.colorScheme.primary),
           title: Text(menuItem.title, style: context.general.textTheme.titleMedium).tr(),
           onTap: () => onTapCallback(menuItem),
+          onLongPress: () => onLongPressCallback(menuItem),
         ),
       );
     }
