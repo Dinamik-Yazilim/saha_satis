@@ -1,9 +1,8 @@
-// app_layout_enum.dart
-/// Uygulama ekranı düzeni seçeneklerini temsil eder.
+/// The application screen represents the layout options.
 enum AppLayouts {
-  grid, // Izgara düzeni (varsayılan)
-  list, // Liste düzeni
-  // İhtiyaç halinde buraya başka düzenler de eklenebilir.
+  grid,
+  list,
+  // If necessary, other arrangements can be added here.
 }
 
 /// [AppLayouts] enum'ının string dönüşümlerini ve string'den enum'a dönüşümü sağlar.
@@ -14,8 +13,8 @@ extension AppLayoutsExtension on AppLayouts {
   }
 }
 
-/// Verilen string değeri bir [AppLayouts] enum değerine dönüştürür.
-/// Eşleşme bulunamazsa null döner.
+///The given string converts the value to a [AppLayouts] enum value.
+///If the match is not found, Null.
 AppLayouts? appLayoutFromString(String? layoutString) {
   if (layoutString == null) return null;
   for (AppLayouts layout in AppLayouts.values) {
