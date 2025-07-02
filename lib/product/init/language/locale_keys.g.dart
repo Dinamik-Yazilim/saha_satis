@@ -46,7 +46,21 @@ abstract class  LocaleKeys {
   static const general_dialog_version_title = 'general.dialog.version.title';
   static const general_dialog_version_content = 'general.dialog.version.content';
   static const general_dialog_version = 'general.dialog.version';
+  static const general_dialog_yes = 'general.dialog.yes';
+  static const general_dialog_no = 'general.dialog.no';
   static const general_dialog = 'general.dialog';
   static const general = 'general';
+  static const layout_noPermission = 'layout.noPermission';
+  static const layout_favoriteDialog_title = 'layout.favoriteDialog.title';
+  static const layout_favoriteDialog_addContent = 'layout.favoriteDialog.addContent';
+  static const layout_favoriteDialog_removeContent = 'layout.favoriteDialog.removeContent';
+  static const layout_favoriteDialog_addedMessage = 'layout.favoriteDialog.addedMessage';
+  static const layout_favoriteDialog_removedMessage = 'layout.favoriteDialog.removedMessage';
+  static const layout_favoriteDialog = 'layout.favoriteDialog';
+  static const layout_mainMenu = 'layout.mainMenu';
+  static const layout_favorites = 'layout.favorites';
+  static const layout_noFavorites = 'layout.noFavorites';
+  static const layout_favorite_noRoute = 'layout.favorite_noRoute';
+  static const layout = 'layout';
 
 }
