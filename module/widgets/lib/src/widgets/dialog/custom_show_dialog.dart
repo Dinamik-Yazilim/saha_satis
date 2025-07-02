@@ -21,7 +21,7 @@ Future<void> customShowDialogGeneric(
 
   WidgetsBinding.instance.addPostFrameCallback((_) {
     if (!config.dismissible) {
-      Future.delayed(Duration(seconds: offTime ?? 2), () {
+      Future.delayed(Duration(milliseconds: offTime ?? 2000), () {
         if (context.mounted) Navigator.of(context).pop();
       });
     }
