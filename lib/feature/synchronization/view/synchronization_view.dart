@@ -30,9 +30,8 @@ class SynchronizationView extends StatefulWidget {
 class _SynchronizationViewState extends BaseState<SynchronizationView> with SynchronizationMixin {
   @override
   Widget build(BuildContext context) {
-    if (widget.showAsDialog) {
-      return const _SynchronizationDialogWidget();
-    }
-    return _SynchronizationListWidget(synchronizationViewModel: synchronizationViewModel);
+    return widget.showAsDialog
+        ? const _SynchronizationDialogWidget()
+        : _SynchronizationListWidget(synchronizationViewModel: synchronizationViewModel);
   }
 }
