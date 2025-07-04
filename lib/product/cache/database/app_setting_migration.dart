@@ -24,6 +24,8 @@ class AppSettingMigration extends Migration {
           'expiresIn': int,
           'isGuestUser': bool,
           'appLayout': String,
+          'isRetail': int,
+          'terminalDepotNo': int,
         },
         'id',
         autoIncrement: true,

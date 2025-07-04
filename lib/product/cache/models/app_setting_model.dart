@@ -14,6 +14,8 @@ class AppSettingModel extends BaseModel {
   String? authTokenType;
   int? expiresIn;
   String? appLayout;
+  int? isRetail;
+  int? terminalDepotNo;
 
   AppSettingModel({
     super.id,
@@ -29,6 +31,8 @@ class AppSettingModel extends BaseModel {
     this.expiresIn,
     this.isGuestUser = false,
     this.appLayout = 'grid',
+    this.isRetail,
+    this.terminalDepotNo,
   });
 
   /// Map'ten AppSettingModel oluşturur.
@@ -47,6 +51,8 @@ class AppSettingModel extends BaseModel {
       expiresIn: map['expiresIn'] as int?,
       isGuestUser: (map['isGuestUser'] as int?) == 1,
       appLayout: map['appLayout'] as String? ?? 'grid',
+      isRetail: map['isRetail'] as int?,
+      terminalDepotNo: map['terminalDepotNo'] as int?,
     );
   }
 
@@ -66,6 +72,8 @@ class AppSettingModel extends BaseModel {
       'expiresIn': expiresIn,
       'isGuestUser': isGuestUser! ? 1 : 0,
       'appLayout': appLayout ?? 'grid',
+      'isRetail': isRetail,
+      'terminalDepotNo': terminalDepotNo,
     };
   }
 
