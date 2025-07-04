@@ -15,6 +15,7 @@ import 'package:dinamik10_pos/product/cache/database/stock_movements_migration.d
 import 'package:dinamik10_pos/product/cache/database/stock_sale_price_lists_migration.dart';
 import 'package:dinamik10_pos/product/cache/database/stock_sales_prices_migration.dart';
 import 'package:dinamik10_pos/product/cache/database/stocks_migration.dart';
+import 'package:dinamik10_pos/product/cache/database/taxes_migration.dart';
 import 'package:dinamik10_pos/product/cache/database/warehouses_migration.dart';
 
 import '../../cache/database/app_setting_migration.dart';
@@ -45,6 +46,7 @@ class DatabaseInitializer {
         StockSalesPricesMigration(),
         StocksMigration(),
         WarehousesMigration(),
+        TaxesMigration(),
       ],
     );
 

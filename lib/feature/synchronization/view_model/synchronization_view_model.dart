@@ -62,6 +62,7 @@ class SynchronizationViewModel extends BaseCubit<SynchronizationState> {
       SyncItem(key: 'bank', name: 'Bankalar', syncFunction: _syncGetOperation.getBanks),
       SyncItem(key: 'payment_orders', name: 'Ödeme Emirleri', syncFunction: _syncGetOperation.getPaymentOrders),
       SyncItem(key: 'projects', name: 'Projeler', syncFunction: _syncGetOperation.getProjects),
+      SyncItem(key: 'tax', name: 'Vergiler', syncFunction: _syncGetOperation.getTaxDefinitions),
       /* SyncItem(
         key: 'customer_account_movements',
         name: 'Cari hesap hareketleri',

@@ -623,6 +623,26 @@ OFFSET {offset} ROWS
 FETCH NEXT {fetchNext} ROWS ONLY;
 """;
 
+  static const String taxesSyncQueryTemplate = """
+select 8 as totalCountForSync, 1 as id, 0 as vatNo, dbo.fn_VergiYuzde(0) as vatRate
+union all
+select 8 as totalCountForSync, 2 as id, 1 as vatNo, dbo.fn_VergiYuzde(1) as vatRate
+union all
+select 8 as totalCountForSync, 3 as id, 2 as vatNo, dbo.fn_VergiYuzde(2) as vatRate
+union all
+select 8 as totalCountForSync, 4 as id, 3 as vatNo, dbo.fn_VergiYuzde(3) as vatRate
+union all
+select 8 as totalCountForSync, 5 as id, 4 as vatNo, dbo.fn_VergiYuzde(4) as vatRate
+union all
+select 8 as totalCountForSync, 6 as id, 5 as vatNo, dbo.fn_VergiYuzde(5) as vatRate
+union all
+select 8 as totalCountForSync, 7 as id, 6 as vatNo, dbo.fn_VergiYuzde(6) as vatRate
+union all
+select 8 as totalCountForSync, 8 as id, 7 as vatNo, dbo.fn_VergiYuzde(7) as vatRate
+union all
+select 8 as totalCountForSync, 9 as id, 8 as vatNo, dbo.fn_VergiYuzde(8) as vatRate
+""";
+
   /// Generates a JSON payload containing the database configuration and the dynamic SQL query.
   ///
   /// The [queryTemplate] parameter takes the SQL query template to be used (e.g., `barcodeSyncQueryTemplate`).

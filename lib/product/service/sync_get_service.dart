@@ -12,6 +12,7 @@ import 'package:dinamik10_pos/product/cache/models/responsibility_centers_model.
 import 'package:dinamik10_pos/product/cache/models/stock_movements_model.dart';
 import 'package:dinamik10_pos/product/cache/models/stock_sale_price_lists_model.dart';
 import 'package:dinamik10_pos/product/cache/models/stocks_model.dart';
+import 'package:dinamik10_pos/product/cache/models/tax_model.dart';
 import 'package:dinamik10_pos/product/cache/models/warehouses_model.dart';
 import 'package:dinamik10_pos/product/service/interface/sync_get_operation.dart';
 import 'package:flutter/foundation.dart';
@@ -252,6 +253,19 @@ class SyncGetService extends SyncGetOperation {
       logPrefix: 'WarehouseModel',
       clearExisting: clearExisting,
       syncKey: 'warehouseModel',
+      onProgressUpdate: onProgressUpdate,
+    );
+  }
+
+  @override
+  Future<bool> getTaxDefinitions({bool clearExisting = false, ValueChanged<String>? onProgressUpdate}) async {
+    return await _syncAndSave<TaxModel>(
+      tableName: TaxModel.staticTableName,
+      queryTemplate: GlobalMicroSyncQuery.taxesSyncQueryTemplate,
+      fromMapFactory: TaxModel.fromMap,
+      logPrefix: 'TaxModel',
+      clearExisting: clearExisting,
+      syncKey: 'taxModel',
       onProgressUpdate: onProgressUpdate,
     );
   }

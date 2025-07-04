@@ -18,4 +18,5 @@ abstract class SyncGetOperation {
   Future<bool> getStokSalePrice({bool clearExisting = false, ValueChanged<String>? onProgressUpdate});
   Future<bool> getStocks({bool clearExisting = false, ValueChanged<String>? onProgressUpdate});
   Future<bool> getWareHouses({bool clearExisting = false, ValueChanged<String>? onProgressUpdate});
+  Future<bool> getTaxDefinitions({bool clearExisting = false, ValueChanged<String>? onProgressUpdate});
 }
