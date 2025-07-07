@@ -126,6 +126,11 @@ class _LayoutViewState extends BaseState<LayoutView> with LayoutViewMixin {
       strokeWidth: 2,
       child: ListView(
         children: [
+          Icon(
+            BootstrapIcons.arrow_down_short,
+            size: 50,
+            color: context.general.colorScheme.tertiary.withValues(alpha: 0.6),
+          ),
           Padding(
             padding: ProjectPadding.allLarge(),
             child: Text(
