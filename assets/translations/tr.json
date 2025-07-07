@@ -21,7 +21,10 @@
         "sales_invoice": "Satış Faturası",
         "sales_delivery_note": "Satış İrsaliyesi",
         "reports": "Raporlar",
-        "settings": "Ayarlar"
+        "settings": "Ayarlar",
+        "cards": "Kartlar",
+        "stock": "Stok",
+        "currents": "Cariler"
     },
     "settings": {
         "version": "Versiyon",

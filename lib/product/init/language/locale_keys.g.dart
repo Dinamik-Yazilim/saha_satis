@@ -23,6 +23,9 @@ abstract class  LocaleKeys {
   static const menu_sales_delivery_note = 'menu.sales_delivery_note';
   static const menu_reports = 'menu.reports';
   static const menu_settings = 'menu.settings';
+  static const menu_cards = 'menu.cards';
+  static const menu_stock = 'menu.stock';
+  static const menu_currents = 'menu.currents';
   static const menu = 'menu';
   static const settings_version = 'settings.version';
   static const settings_app_exit = 'settings.app_exit';

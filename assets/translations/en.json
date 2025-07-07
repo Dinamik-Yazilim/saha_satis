@@ -21,7 +21,10 @@
         "sales_invoice": "Sales Invoice",
         "sales_delivery_note": "Sales Delivery Note",
         "reports": "Reports",
-        "settings": "Settings"
+        "settings": "Settings",
+        "cards": "Cards",
+        "stock": "Stock",
+        "currents": "Currents"
     },
     "settings": {
         "version": "Version",

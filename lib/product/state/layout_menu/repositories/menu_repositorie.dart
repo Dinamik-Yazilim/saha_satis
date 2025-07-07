@@ -1,3 +1,4 @@
+import 'package:bootstrap_icons/bootstrap_icons.dart';
 import 'package:dinamik10_pos/product/init/language/locale_keys.g.dart';
 import 'package:dinamik10_pos/product/router/app_router.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,28 @@ import '../model/menu_item.dart';
 class MenuRepository {
   // The place where we define the entire menu structure of the application
   static final List<MenuItem> _allMenuItems = [
+    MenuItem(
+      id: 'card',
+      title: LocaleKeys.menu_cards,
+      requiredPermissions: ['can_view_card'],
+      icon: BootstrapIcons.grid_1x2_fill,
+      children: [
+        MenuItem(
+          id: 'stoklar',
+          title: LocaleKeys.menu_stock,
+          icon: BootstrapIcons.box_seam_fill,
+          route: const SettingRoute(),
+          requiredPermissions: ['can_view_stock'],
+        ),
+        MenuItem(
+          id: 'cariler',
+          title: LocaleKeys.menu_currents,
+          icon: BootstrapIcons.person_vcard_fill,
+          route: const SettingRoute(),
+          requiredPermissions: ['can_view_current'],
+        ),
+      ],
+    ),
     MenuItem(
       id: 'alis_evraklari',
       title: LocaleKeys.menu_purchase_documents,

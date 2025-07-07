@@ -30,6 +30,9 @@ mixin LayoutViewMixin on BaseState<LayoutView> {
     'can_view_sale_delivery_note',
     'can_view_reports',
     'can_manage_settings',
+    'can_view_card',
+    'can_view_stock',
+    'can_view_current',
   ];
   static const List<Color> _corporateColors = [
     Color(0xFFf2e8cf),
