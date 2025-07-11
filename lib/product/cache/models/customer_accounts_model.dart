@@ -2,6 +2,7 @@ import 'package:core/core.dart'; // Assuming BaseModel is in your core package
 
 class CustomerAccountModel extends BaseModel {
   final String? code;
+  final int? sequenceNo;
   final String? title1;
   final String? title2;
   final String? taxOfficeName;
@@ -21,6 +22,7 @@ class CustomerAccountModel extends BaseModel {
   CustomerAccountModel({
     super.id, // 'id' field is inherited from BaseModel
     this.code,
+    this.sequenceNo,
     this.title1,
     this.title2,
     this.taxOfficeName,
@@ -43,6 +45,7 @@ class CustomerAccountModel extends BaseModel {
     return CustomerAccountModel(
       id: map['id'] as String?,
       code: map['code'] as String?,
+      sequenceNo: map['sequenceNo'] as int?,
       title1: map['title1'] as String?,
       title2: map['title2'] as String?,
       taxOfficeName: map['taxOfficeName'] as String?,
@@ -66,6 +69,7 @@ class CustomerAccountModel extends BaseModel {
     return {
       'id': id,
       'code': code,
+      'sequenceNo': sequenceNo,
       'title1': title1,
       'title2': title2,
       'taxOfficeName': taxOfficeName,

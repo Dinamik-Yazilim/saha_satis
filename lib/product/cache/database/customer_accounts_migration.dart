@@ -17,6 +17,7 @@ class CustomerAccountsMigration extends Migration {
           // Column definitions using the preferred aliased names
           'id': String, // Corresponds to cari_Guid AS id (GUIDs stored as String)
           'code': String, // Corresponds to cari_kod AS code
+          'sequenceNo': int, // Corresponds to cari_satis_fk AS sequenceNo
           'title1': String, // Corresponds to cari_unvan1 AS title1
           'title2': String, // Corresponds to cari_unvan2 AS title2
           'taxOfficeName': String, // Corresponds to cari_vdaire_adi AS taxOfficeName
