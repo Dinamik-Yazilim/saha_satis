@@ -22,84 +22,87 @@ class _LayoutGridWidget extends StatelessWidget {
       shadowColor: contentColor.withValues(alpha: 0.8),
       shape: RoundedRectangleBorder(borderRadius: ProjectBorderRadius.normal()),
       clipBehavior: Clip.antiAlias,
-      child: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [cardBaseColor, cardBaseColor.withValues(alpha: 0.8)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+      child: CustomBadgesWidget(
+        isShow: menuItem.isOnline,
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [cardBaseColor, cardBaseColor.withValues(alpha: 0.8)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
-        child: InkWell(
-          onTap: onTap,
-          onLongPress: () => onLongPressCallback(menuItem),
-          borderRadius: ProjectBorderRadius.normal(),
-          splashColor: contentColor.withValues(alpha: 0.15),
-          highlightColor: contentColor.withValues(alpha: 0.08),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (menuItem.icon != null)
-                    Icon(
-                      menuItem.icon,
-                      size: CustomResponsiveHelper.isMobileOrTablet(context) ? 56 : 84,
-                      color: contentColor,
-                    ),
-                  Column(
-                    children: [
-                      Text(
-                        menuItem.title,
-                        textAlign: TextAlign.center,
-                        style:
-                            CustomResponsiveHelper.isMobileOrTablet(context)
-                                ? context.general.textTheme.titleLarge?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: contentColor,
-                                )
-                                : context.general.textTheme.headlineMedium?.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: contentColor,
-                                ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ).tr(),
-                      if (menuItem.microId != null)
+          child: InkWell(
+            onTap: onTap,
+            onLongPress: () => onLongPressCallback(menuItem),
+            borderRadius: ProjectBorderRadius.normal(),
+            splashColor: contentColor.withValues(alpha: 0.15),
+            highlightColor: contentColor.withValues(alpha: 0.08),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (menuItem.icon != null)
+                      Icon(
+                        menuItem.icon,
+                        size: CustomResponsiveHelper.isMobileOrTablet(context) ? 56 : 84,
+                        color: contentColor,
+                      ),
+                    Column(
+                      children: [
                         Text(
-                          '( ${menuItem.microId} )',
-                          style: context.general.textTheme.bodyMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: contentColor.withValues(alpha: 0.9),
-                          ),
+                          menuItem.title,
+                          textAlign: TextAlign.center,
+                          style:
+                              CustomResponsiveHelper.isMobileOrTablet(context)
+                                  ? context.general.textTheme.titleLarge?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: contentColor,
+                                  )
+                                  : context.general.textTheme.headlineMedium?.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: contentColor,
+                                  ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ).tr(),
-                    ],
-                  ),
-                ],
-              ),
-              if (menuItem.isExpandable)
-                Positioned(
-                  right: 20,
-                  top: 20,
-                  child: Icon(
-                    Icons.layers,
-                    size: CustomResponsiveHelper.isMobileOrTablet(context) ? 24 : 32,
-                    color: contentColor.withValues(alpha: 0.6),
-                  ),
+                        if (menuItem.microId != null)
+                          Text(
+                            '( ${menuItem.microId} )',
+                            style: context.general.textTheme.bodyMedium?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: contentColor.withValues(alpha: 0.9),
+                            ),
+                          ).tr(),
+                      ],
+                    ),
+                  ],
                 ),
-              if (menuItem.isFavorite)
-                Positioned(
-                  left: 20,
-                  top: 20,
-                  child: Icon(
-                    BootstrapIcons.heart_fill,
-                    size: CustomResponsiveHelper.isMobileOrTablet(context) ? 20 : 32,
-                    color: context.general.colorScheme.error.withValues(alpha: 0.5),
+                if (menuItem.isExpandable)
+                  Positioned(
+                    right: 0,
+                    bottom: 0,
+                    child: Icon(
+                      Icons.layers,
+                      size: CustomResponsiveHelper.isMobileOrTablet(context) ? 24 : 32,
+                      color: contentColor.withValues(alpha: 0.6),
+                    ),
                   ),
-                ),
-            ],
+                if (menuItem.isFavorite)
+                  Positioned(
+                    left: 20,
+                    top: 20,
+                    child: Icon(
+                      BootstrapIcons.heart_fill,
+                      size: CustomResponsiveHelper.isMobileOrTablet(context) ? 20 : 32,
+                      color: context.general.colorScheme.error.withValues(alpha: 0.5),
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),
