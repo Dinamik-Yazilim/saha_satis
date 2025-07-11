@@ -39,11 +39,21 @@ class LocalStockService {
     required StockSearchType? searchType,
     required String? searchText,
     required int offset,
+    required int? currentSequenceNo,
   }) async {
     final Database db = await DatabaseProvider.instance.database;
 
     List<dynamic> queryParams = [];
     String queryAdditional = '';
+    String currentSequenceNoCondition1 = '';
+    String currentSequenceNoCondition2 = '';
+    if (currentSequenceNo != null) {
+      currentSequenceNoCondition1 = '''AND SF1.listSequenceNo = $currentSequenceNo''';
+      currentSequenceNoCondition2 = '''AND SF2.listSequenceNo = $currentSequenceNo''';
+    } else {
+      currentSequenceNoCondition1 = '''''';
+      currentSequenceNoCondition2 = '''''';
+    }
 
     if (searchType != null && searchText != null) {
       if (searchType == StockSearchType.stockCode) {
@@ -92,17 +102,22 @@ SELECT DISTINCT
             S.name AS StockName, -- stocks.name
             S.shortName AS ShortName, -- stocks.shortName
             S.foreignName AS ForeignName, -- stocks.foreignName
-            S.unit1Name AS Unit1Name, -- stocks.unit1Name
-            S.unit1Multiplier AS Unit1Multiplier, -- stocks.unit1Multiplier
-            S.unit2Name AS Unit2Name, -- stocks.unit2Name
-            S.unit2Multiplier AS Unit2Multiplier, -- stocks.unit2Multiplier
-            S.unit3Name AS Unit3Name, -- stocks.unit3Name
-            S.unit3Multiplier AS Unit3Multiplier, -- stocks.unit3Multiplier
-            S.unit4Name AS Unit4Name, -- stocks.unit4Name
-            S.unit4Multiplier AS Unit4Multiplier, -- stocks.unit4Multiplier
+            CASE
+            	WHEN BT.unitPointer = 2 THEN S.unit2Name
+            	WHEN BT.unitPointer = 3 THEN S.unit3Name
+            	WHEN BT.unitPointer = 4 THEN S.unit4Name
+            	ELSE S.unit1Name
+            END AS UnitName,
+            CASE
+            	WHEN BT.unitPointer = 2 THEN S.unit2Multiplier
+            	WHEN BT.unitPointer = 3 THEN S.unit3Multiplier
+            	WHEN BT.unitPointer = 4 THEN S.unit4Multiplier
+            	ELSE S.unit1Multiplier
+            END AS UnitMultiplier,
             S.retailTax AS RetailTaxFKID, -- stocks.retailTax
             S.wholesaleTax AS WholesaleTaxFKID, -- stocks.wholesaleTax
             S.salesBlocked AS SalesBlocked, -- stocks.salesBlocked
+            S.isPassive AS IsPassive, -- stocks.passive
             S.orderBlocked AS OrderBlocked, -- stocks.orderBlocked
             S.goodsReceiptBlocked AS GoodsReceiptBlocked, -- stocks.goodsReceiptBlocked
             S.createdAt AS StockCreatedAt, -- stocks.createdAt
@@ -154,21 +169,45 @@ SELECT DISTINCT
             SF1.updatedAt AS PriceUpdatedAt, -- stock_sales_prices.updatedAt
             SFL1.vatIncluded AS ListVatIncluded -- stock_sale_price_lists.vatIncluded
 
-
         FROM stocks S
         LEFT JOIN barcodes BT ON BT.stockCode = S.code
-        LEFT JOIN stock_sales_prices SF1 ON S.code = SF1.stockCode AND SF1.price > 0 AND SF1.warehouseSequenceNo = $terminalDepotNo
-        LEFT JOIN stock_sales_prices SF2 ON S.code = SF2.stockCode AND SF2.price > 0 AND SF2.warehouseSequenceNo = 0
+                LEFT JOIN stock_sales_prices SF1 ON
+    SF1.stockCode = S.code
+    AND SF1.price > 0
+    AND SF1.warehouseSequenceNo = $terminalDepotNo
+    $currentSequenceNoCondition1
+    AND SF1.updatedAt = (
+        SELECT MAX(sub.updatedAt)
+        FROM stock_sales_prices sub
+        WHERE sub.stockCode = S.code
+          AND sub.price > 0
+          AND sub.warehouseSequenceNo = SF1.warehouseSequenceNo
+          AND sub.listSequenceNo = SF1.listSequenceNo
+          AND sub.unitPointer = BT.unitPointer
+    )
+                INNER JOIN stock_sales_prices SF2 ON
+    SF2.stockCode = S.code
+    AND SF2.price > 0
+    AND SF2.warehouseSequenceNo = 0
+    $currentSequenceNoCondition2
+    AND SF2.updatedAt = (
+        SELECT MAX(sub.updatedAt)
+        FROM stock_sales_prices sub
+        WHERE sub.stockCode = S.code
+          AND sub.price > 0
+          AND sub.warehouseSequenceNo = SF2.warehouseSequenceNo
+          AND sub.listSequenceNo = SF2.listSequenceNo
+          AND sub.unitPointer = BT.unitPointer
+    )
         LEFT JOIN stock_sale_price_lists SFL1 ON SFL1.sequenceNo = SF1.listSequenceNo
         LEFT JOIN stock_sale_price_lists SFL2 ON SFL2.sequenceNo = SF2.listSequenceNo
         LEFT JOIN taxes VE1 ON VE1.vatNo = S.retailTax
         LEFT JOIN taxes VE2 ON VE2.vatNo = S.wholesaleTax
         WHERE
             S.salesBlocked = 0
-            -- `S.isActive = 0` koşulu kaldırıldı, çünkü 'gen' paketindeki 'StockCardModel'de bu alan yok gibi görünüyor.
-            -- Eğer bu kolonu gerçekten kullanıyorsanız, `stocks` tablosunda olduğundan ve Sqflite modelinizde bulunduğundan emin olun.
+            AND S.isPassive = 0
             ${queryAdditional.isNotEmpty ? 'AND ($queryAdditional)' : ''}
-        LIMIT 300 OFFSET $offset
+        LIMIT 100 OFFSET $offset
 )
 SELECT DISTINCT
        ID,
@@ -176,17 +215,12 @@ SELECT DISTINCT
        StockName,
        ShortName,
        ForeignName,
-       Unit1Name,
-       Unit1Multiplier,
-       Unit2Name,
-       Unit2Multiplier,
-       Unit3Name,
-       Unit3Multiplier,
-       Unit4Name,
-       Unit4Multiplier,
+       UnitName,
+       UnitMultiplier,
        RetailTaxFKID,
        WholesaleTaxFKID,
        SalesBlocked,
+       IsPassive,
        OrderBlocked,
        GoodsReceiptBlocked,
        StockCreatedAt,
@@ -226,7 +260,7 @@ SELECT DISTINCT
        PriceUpdatedAt,
        ListVatIncluded
 FROM Stock
-ORDER BY CurrentPriceWarehouseNo DESC, StockCode, BarcodeUnitPointer;
+ORDER BY StockName ASC;
 ''';
     // SQL sorgusunu çalıştırma
     List<Map<String, dynamic>> result;
@@ -241,7 +275,7 @@ ORDER BY CurrentPriceWarehouseNo DESC, StockCode, BarcodeUnitPointer;
         result.map((map) {
           final mutableMap = Map<String, dynamic>.from(map);
 
-          if (selectedTaxType == 0) {
+          if (selectedTaxType == 1) {
             // Perakende
             mutableMap['PriceIncludingTax'] = mutableMap['RetailPriceIncludingTax'];
             mutableMap['PriceExcludingTax'] = mutableMap['RetailPriceExcludingTax'];
