@@ -28,6 +28,7 @@ class StockModel extends BaseModel {
   final String? origin;
   final String? mainGroupCode;
   final bool? detailTracking; // Stored as INTEGER (0 or 1) in SQLite
+  final bool? isPassive;
   final int? createdBy;
   final String? createdAt; // ISO8601 string
   final int? updatedBy;
@@ -62,6 +63,7 @@ class StockModel extends BaseModel {
     this.origin,
     this.mainGroupCode,
     this.detailTracking,
+    this.isPassive,
     this.createdBy,
     this.createdAt,
     this.updatedBy,
@@ -99,6 +101,7 @@ class StockModel extends BaseModel {
       origin: map['origin'] as String?,
       mainGroupCode: map['mainGroupCode'] as String?,
       detailTracking: map['detailTracking'] == 1, // SQLite stores booleans as 0 or 1
+      isPassive: map['isPassive'] == 1, // SQLite stores booleans as 0 or 1
       createdBy: map['createdBy'] as int?,
       createdAt: map['createdAt'] as String?,
       updatedBy: map['updatedBy'] as int?,
@@ -137,6 +140,7 @@ class StockModel extends BaseModel {
       'origin': origin,
       'mainGroupCode': mainGroupCode,
       'detailTracking': detailTracking == true ? 1 : 0, // Convert bool to int for SQLite
+      'isPassive': detailTracking == true ? 1 : 0, // Convert bool to int for SQLite
       'createdBy': createdBy,
       'createdAt': createdAt,
       'updatedBy': updatedBy,

@@ -43,6 +43,7 @@ class StocksMigration extends Migration {
           'origin': String, // Corresponds to sto_mensei AS origin
           'mainGroupCode': String, // Corresponds to sto_anagrup_kod AS mainGroupCode
           'detailTracking': int, // Corresponds to sto_detay_takip AS detailTracking (boolean/int 0 or 1)
+          'isPassive': int, // Corresponds to sto_pasif_fl AS isPassive (boolean/int 0 or 1)
           'createdBy': int, // Corresponds to sto_create_user AS createdBy
           'createdAt': String, // Corresponds to sto_create_date AS createdAt
           'updatedBy': int, // Corresponds to sto_lastup_user AS updatedBy
