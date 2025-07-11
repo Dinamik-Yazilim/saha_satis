@@ -32,7 +32,7 @@ class StockSalePriceListModel extends BaseModel {
       id: map['id'] as String?,
       sequenceNo: map['sequenceNo'] as int?,
       description: map['description'] as String?,
-      vatIncluded: map['vatIncluded'] == 1, // SQLite stores booleans as 0 or 1
+      vatIncluded: map['vatIncluded'] as bool?, // SQLite stores booleans as 0 or 1
       startDate: map['startDate'] as String?,
       endDate: map['endDate'] as String?,
       appliedPrice: map['appliedPrice'] as int?,
