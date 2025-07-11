@@ -23,7 +23,7 @@
         "reports": "Raporlar",
         "settings": "Ayarlar",
         "cards": "Kartlar",
-        "stock": "Stok",
+        "stock": "Stoklar",
         "currents": "Cariler"
     },
     "settings": {
@@ -56,7 +56,8 @@
                 "content": "Versiyon bilgisi"
             },
             "yes": "Evet",
-            "no": "Hayır"
+            "no": "Hayır",
+            "copy":"Metin kopyalandı"
         }
     },
     "layout": {
@@ -72,5 +73,34 @@
         "favorites": "Favoriler",
         "noFavorites": "Henüz favori menü öğeniz bulunmamaktadır.\n\nFavoriye menü öğesi eklemek için menü öğesine uzun basın.\n\nFavoriden çikmak için tekrar aşağı kaydırın.",
         "favorite_noRoute": "Favori alt menü öğelerinin doğrudan rotası olmalıdır."
+    },
+    "stock": {
+        "search_type_name": "Stok Adı Ara",
+        "search_type_code": "Stok Kodu Ara",
+        "search_type_barcode": "Barkod Ara",
+        "stock_detail": "Stok Detay",
+        "general": "Genel",
+        "stock_general_info": "Stok Genel Bilgiler",
+        "barcode": "Barkodu",
+        "code": "Kodu",
+        "name": "Adı",
+        "unit_name": "Birimi",
+        "vendor_name": "Satıcı Adı",
+        "category_code": "Kategori Kodu",
+        "brand_code": "Marka Kodu",
+        "origin": "Menşei",
+        "sales_blocked": "Satış Dursun",
+        "order_blocked": "Sipariş Dursun",
+        "blocked": "Dursun",
+        "not_blocked": "Durmasın",
+        "updated_at": "Son Güncellenme Tarihi",
+        "price": "Fiyat",
+        "price_list": "Liste Fiyatı",
+        "price_including_tax": "Kdv'li {} Fiyatı",
+        "price_excluding_tax": "Kdv'siz {} Fiyatı",
+        "vat": "KDV",
+        "list_sequence_no": "Satış Liste Numarası",
+        "price_warehouse_no": "Satış Depo Numarası",
+        "warehouse": "Depo"
     }
 }

@@ -51,6 +51,7 @@ abstract class  LocaleKeys {
   static const general_dialog_version = 'general.dialog.version';
   static const general_dialog_yes = 'general.dialog.yes';
   static const general_dialog_no = 'general.dialog.no';
+  static const general_dialog_copy = 'general.dialog.copy';
   static const general_dialog = 'general.dialog';
   static const general = 'general';
   static const layout_noPermission = 'layout.noPermission';
@@ -65,5 +66,33 @@ abstract class  LocaleKeys {
   static const layout_noFavorites = 'layout.noFavorites';
   static const layout_favorite_noRoute = 'layout.favorite_noRoute';
   static const layout = 'layout';
+  static const stock_search_type_name = 'stock.search_type_name';
+  static const stock_search_type_code = 'stock.search_type_code';
+  static const stock_search_type_barcode = 'stock.search_type_barcode';
+  static const stock_stock_detail = 'stock.stock_detail';
+  static const stock_general = 'stock.general';
+  static const stock_stock_general_info = 'stock.stock_general_info';
+  static const stock_barcode = 'stock.barcode';
+  static const stock_code = 'stock.code';
+  static const stock_name = 'stock.name';
+  static const stock_unit_name = 'stock.unit_name';
+  static const stock_vendor_name = 'stock.vendor_name';
+  static const stock_category_code = 'stock.category_code';
+  static const stock_brand_code = 'stock.brand_code';
+  static const stock_origin = 'stock.origin';
+  static const stock_sales_blocked = 'stock.sales_blocked';
+  static const stock_order_blocked = 'stock.order_blocked';
+  static const stock_blocked = 'stock.blocked';
+  static const stock_not_blocked = 'stock.not_blocked';
+  static const stock_updated_at = 'stock.updated_at';
+  static const stock_price = 'stock.price';
+  static const stock_price_list = 'stock.price_list';
+  static const stock_price_including_tax = 'stock.price_including_tax';
+  static const stock_price_excluding_tax = 'stock.price_excluding_tax';
+  static const stock_vat = 'stock.vat';
+  static const stock_list_sequence_no = 'stock.list_sequence_no';
+  static const stock_price_warehouse_no = 'stock.price_warehouse_no';
+  static const stock_warehouse = 'stock.warehouse';
+  static const stock = 'stock';
 
 }

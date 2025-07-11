@@ -23,7 +23,7 @@
         "reports": "Reports",
         "settings": "Settings",
         "cards": "Cards",
-        "stock": "Stock",
+        "stock": "Stocks",
         "currents": "Currents"
     },
     "settings": {
@@ -56,7 +56,8 @@
                 "content": "Version information"
             },
             "yes": "Yes",
-            "no": "No"
+            "no": "No",
+            "copy":"Text copied"
         }
     },
     "layout": {
@@ -72,5 +73,34 @@
         "favorites": "Favorites",
         "noFavorites": "You do not have any favorite menu items yet.\n\n Add some to access them quickly.\n\n Slide it down again to get out of the favorite.",
         "favorite_noRoute": "Favorite sub-menu items should have a direct route."
+    },
+    "stock": {
+        "search_type_name": "Search by Stock Name",
+        "search_type_code": "Search by Stock Code",
+        "search_type_barcode": "Search by Barcode",
+        "stock_detail": "Stock Detail",
+        "general": "General",
+        "stock_general_info": "General Stock Information",
+        "barcode": "Barcode",
+        "code": "Code",
+        "name": "Name",
+        "unit_name": "Unit",
+        "vendor_name": "Vendor Name",
+        "category_code": "Category Code",
+        "brand_code": "Brand Code",
+        "origin": "Origin",
+        "sales_blocked": "Sales Blocked",
+        "order_blocked": "Order Blocked",
+        "blocked": "Stop",
+        "not_blocked": "Don't stop",
+        "updated_at": "Last Updated Date",
+        "price": "Price",
+        "price_list": "List Price",
+        "price_including_tax": "{} Price (Including VAT)",
+        "price_excluding_tax": "{} Price (Excluding VAT)",
+        "vat": "KDV",
+        "list_sequence_no": "Sales List Number",
+        "price_warehouse_no": "Sales Warehouse Number",
+        "warehouse": "Warehouse"
     }
 }
