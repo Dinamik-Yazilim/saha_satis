@@ -10,7 +10,8 @@ class MenuItem {
   final List<String> requiredPermissions;
   final List<MenuItem>? children;
   final PageRouteInfo? route;
-  bool isFavorite;
+  final bool isOnline;
+  final bool isFavorite;
 
   MenuItem({
     required this.id,
@@ -20,6 +21,7 @@ class MenuItem {
     required this.requiredPermissions,
     this.children,
     this.route,
+    this.isOnline = false,
     this.isFavorite = false,
   }) : assert(
          (children != null && children.isNotEmpty && route == null) ||
@@ -41,6 +43,7 @@ class MenuItem {
     List<String>? requiredPermissions,
     ValueGetter<List<MenuItem>?>? children,
     ValueGetter<PageRouteInfo?>? route,
+    bool? isOnline,
     bool? isFavorite,
   }) {
     return MenuItem(
@@ -51,6 +54,7 @@ class MenuItem {
       requiredPermissions: requiredPermissions ?? this.requiredPermissions,
       children: children != null ? children() : this.children,
       route: route != null ? route() : this.route,
+      isOnline: isOnline ?? this.isOnline,
       isFavorite: isFavorite ?? this.isFavorite,
     );
   }

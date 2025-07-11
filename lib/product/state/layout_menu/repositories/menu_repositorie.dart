@@ -17,7 +17,7 @@ class MenuRepository {
           id: 'stoklar',
           title: LocaleKeys.menu_stock,
           icon: BootstrapIcons.box_seam_fill,
-          route: const SettingRoute(),
+          route: const StocksRoute(),
           requiredPermissions: ['can_view_stock'],
         ),
         MenuItem(
@@ -97,6 +97,7 @@ class MenuRepository {
       id: 'raporlar',
       title: LocaleKeys.menu_reports,
       icon: Icons.bar_chart,
+      isOnline: true,
       route: const HomeRoute(),
       requiredPermissions: ['can_view_reports'],
     ),
