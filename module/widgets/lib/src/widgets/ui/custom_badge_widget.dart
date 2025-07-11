@@ -15,16 +15,16 @@ class CustomBadgesWidget extends StatelessWidget {
     return badges.Badge(
       showBadge: isShow ?? false == true,
       ignorePointer: false,
-      badgeContent: badgeContent ?? Icon(Icons.circle, color: colorScheme.secondary, size: 20),
-      position: badges.BadgePosition.topEnd(end: 5, top: 5),
+      badgeContent: badgeContent ?? Icon(Icons.wifi, color: Colors.green, size: 20),
+      position: badges.BadgePosition.topEnd(top: 5, end: 5),
       badgeStyle: badges.BadgeStyle(
         shape: badges.BadgeShape.square,
-        badgeColor: colorScheme.primary,
+        badgeColor: colorScheme.primary.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: colorScheme.surface, width: 1),
+        //   borderSide: BorderSide(color: colorScheme.onSecondary, width: 1),
         elevation: 10,
       ),
-      child: child,
+      child: SizedBox(width: double.infinity, child: child),
     );
   }
 }

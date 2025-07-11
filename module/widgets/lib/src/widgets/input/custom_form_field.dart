@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-enum CustomFormFieldType { text, double, email, phone, password }
+enum CustomFormFieldType { text, double, email, phone, password, integer }
 
 class CustomFormField extends TextFormField {
   CustomFormField({
@@ -69,6 +69,8 @@ class CustomFormField extends TextFormField {
         return 'Şifre';
       case CustomFormFieldType.text:
         return 'Metin';
+      case CustomFormFieldType.integer:
+        return 'Tam Sayı';
     }
   }
 
@@ -84,6 +86,8 @@ class CustomFormField extends TextFormField {
           return emailRegex.hasMatch(val) ? null : 'Geçerli bir e-posta girin';
         case CustomFormFieldType.phone:
           return val.length < 10 ? 'Geçerli bir telefon girin' : null;
+        case CustomFormFieldType.integer:
+          return int.tryParse(val) == null ? 'Geçerli bir sayı girin' : null;
         default:
           return null;
       }
