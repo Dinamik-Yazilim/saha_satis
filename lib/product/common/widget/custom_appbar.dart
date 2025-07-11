@@ -72,18 +72,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                   size: CustomResponsiveHelper.isMobileOrTablet(context) ? 28 : 40,
                 ),
               )
-              : leading ??
-                  IconButton(
-                    onPressed: () {
-                      context.router.back();
-                    },
-                    icon: Icon(
-                      Icons.arrow_back_ios_new_rounded,
-                      color: context.general.colorScheme.primary,
-                      size: CustomResponsiveHelper.isMobileOrTablet(context) ? 28 : 40,
-                    ),
-                  ),
-
+              : leading ?? AutoLeadingButton(color: context.general.colorScheme.primary),
       bottom: bottom,
     );
   }
