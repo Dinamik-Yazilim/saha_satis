@@ -108,9 +108,7 @@ class _SettingViewState extends BaseState<SettingView> with SettingMixin {
               ListTile(
                 leading: Icon(Icons.info),
                 title: Text(LocaleKeys.settings_version, style: context.general.textTheme.titleMedium).tr(),
-                onTap: () {
-                  //  context.router.push(AboutRoute());
-                },
+                onTap: () {},
               ),
             ],
           ),
