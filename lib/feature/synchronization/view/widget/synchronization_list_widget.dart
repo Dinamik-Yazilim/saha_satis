@@ -63,7 +63,7 @@ class _SynchronizationListWidget extends StatelessWidget {
                           final item = syncItems[index];
                           return Card(
                             margin: EdgeInsets.symmetric(vertical: 5),
-                            elevation: 5,
+                            elevation: 2,
                             shape: RoundedRectangleBorder(borderRadius: ProjectBorderRadius.small()),
                             child: Padding(
                               padding: ProjectPadding.allSmall(),
