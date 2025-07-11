@@ -28,14 +28,8 @@ class StockCardModel {
   String? stockName; // stocks.name
   String? shortName; // stocks.shortName
   String? foreignName; // stocks.foreignName
-  String? unit1Name; // stocks.unit1Name
-  double? unit1Multiplier; // stocks.unit1Multiplier
-  String? unit2Name; // stocks.unit2Name
-  double? unit2Multiplier; // stocks.unit2Multiplier
-  String? unit3Name; // stocks.unit3Name
-  double? unit3Multiplier; // stocks.unit3Multiplier
-  String? unit4Name; // stocks.unit4Name
-  double? unit4Multiplier; // stocks.unit4Multiplier
+  String? unitName; // stocks.unit1Name
+  double? unitMultiplier; // stocks.unit1Multiplier
   int? retailTaxFKID; // stocks.retailTax
   int? wholesaleTaxFKID; // stocks.wholesaleTax
   @BoolToIntConverter()
@@ -98,14 +92,8 @@ class StockCardModel {
     this.stockName,
     this.shortName,
     this.foreignName,
-    this.unit1Name,
-    this.unit1Multiplier,
-    this.unit2Name,
-    this.unit2Multiplier,
-    this.unit3Name,
-    this.unit3Multiplier,
-    this.unit4Name,
-    this.unit4Multiplier,
+    this.unitName,
+    this.unitMultiplier,
     this.retailTaxFKID,
     this.wholesaleTaxFKID,
     this.salesBlocked,
@@ -157,6 +145,6 @@ class StockCardModel {
 
   @override
   String toString() {
-    return 'StockCardModel(id: $id, stockCode: $stockCode, stockName: $stockName, shortName: $shortName, foreignName: $foreignName, unit1Name: $unit1Name, unit1Multiplier: $unit1Multiplier, unit2Name: $unit2Name, unit2Multiplier: $unit2Multiplier, unit3Name: $unit3Name, unit3Multiplier: $unit3Multiplier, unit4Name: $unit4Name, unit4Multiplier: $unit4Multiplier, retailTaxFKID: $retailTaxFKID, wholesaleTaxFKID: $wholesaleTaxFKID, salesBlocked: $salesBlocked, orderBlocked: $orderBlocked, goodsReceiptBlocked: $goodsReceiptBlocked, stockCreatedAt: $stockCreatedAt, stockUpdatedAt: $stockUpdatedAt, vendorCode: $vendorCode, categoryCode: $categoryCode, brandCode: $brandCode, sizeCode: $sizeCode, colorCode: $colorCode, modelCode: $modelCode, seasonCode: $seasonCode, origin: $origin, mainGroupCode: $mainGroupCode, detailTracking: $detailTracking, barcodeID: $barcodeID, barcode: $barcode, barcodeContent: $barcodeContent, barcodeType: $barcodeType, barcodeUnitPointer: $barcodeUnitPointer, sizePointer: $sizePointer, colorPointer: $colorPointer, barcodeCreatedAt: $barcodeCreatedAt, barcodeUpdatedAt: $barcodeUpdatedAt, currentListSequenceNo: $currentListSequenceNo, currentPriceWarehouseNo: $currentPriceWarehouseNo, retailTaxPercentage: $retailTaxPercentage, wholesaleTaxPercentage: $wholesaleTaxPercentage, retailPriceIncludingTax: $retailPriceIncludingTax, retailPriceExcludingTax: $retailPriceExcludingTax, wholesalePriceIncludingTax: $wholesalePriceIncludingTax, wholesalePriceExcludingTax: $wholesalePriceExcludingTax, priceIncludingTax: $priceIncludingTax, priceExcludingTax: $priceExcludingTax, priceID: $priceID, paymentPlan: $paymentPlan, priceCurrency: $priceCurrency, priceDiscountCode: $priceDiscountCode, priceCreatedAt: $priceCreatedAt, priceUpdatedAt: $priceUpdatedAt, listVatIncluded: $listVatIncluded)';
+    return 'StockCardModel(id: $id, stockCode: $stockCode, stockName: $stockName, shortName: $shortName, foreignName: $foreignName, unitName: $unitName, unitMultiplier: $unitMultiplier, retailTaxFKID: $retailTaxFKID, wholesaleTaxFKID: $wholesaleTaxFKID, salesBlocked: $salesBlocked, orderBlocked: $orderBlocked, goodsReceiptBlocked: $goodsReceiptBlocked, stockCreatedAt: $stockCreatedAt, stockUpdatedAt: $stockUpdatedAt, vendorCode: $vendorCode, categoryCode: $categoryCode, brandCode: $brandCode, sizeCode: $sizeCode, colorCode: $colorCode, modelCode: $modelCode, seasonCode: $seasonCode, origin: $origin, mainGroupCode: $mainGroupCode, detailTracking: $detailTracking, barcodeID: $barcodeID, barcode: $barcode, barcodeContent: $barcodeContent, barcodeType: $barcodeType, barcodeUnitPointer: $barcodeUnitPointer, sizePointer: $sizePointer, colorPointer: $colorPointer, barcodeCreatedAt: $barcodeCreatedAt, barcodeUpdatedAt: $barcodeUpdatedAt, currentListSequenceNo: $currentListSequenceNo, currentPriceWarehouseNo: $currentPriceWarehouseNo, retailTaxPercentage: $retailTaxPercentage, wholesaleTaxPercentage: $wholesaleTaxPercentage, retailPriceIncludingTax: $retailPriceIncludingTax, retailPriceExcludingTax: $retailPriceExcludingTax, wholesalePriceIncludingTax: $wholesalePriceIncludingTax, wholesalePriceExcludingTax: $wholesalePriceExcludingTax, priceIncludingTax: $priceIncludingTax, priceExcludingTax: $priceExcludingTax, priceID: $priceID, paymentPlan: $paymentPlan, priceCurrency: $priceCurrency, priceDiscountCode: $priceDiscountCode, priceCreatedAt: $priceCreatedAt, priceUpdatedAt: $priceUpdatedAt, listVatIncluded: $listVatIncluded)';
   }
 }

@@ -24,7 +24,7 @@ InputDecoration customFormFieldDecoration(
     filled: true,
     fillColor: colorScheme.surface,
     labelText: labelText,
-    labelStyle: textTheme.titleSmall,
+    labelStyle: textTheme.titleSmall?.copyWith(fontWeight: FontWeight.bold),
     suffixIcon: suffixIcon,
     prefixIcon: prefixIcon,
     enabledBorder: border(colorScheme.outlineVariant),
